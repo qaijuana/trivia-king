@@ -23,7 +23,7 @@ mongoose.connection.once("open", () => {
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
-app.use("/test", testController);
+app.use("/api/test", testController);
 //
 //
 
