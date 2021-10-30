@@ -16,7 +16,7 @@ const Test = () => {
 
   return (
     <>
-      <h1 className="text-xl">{testData?.[0]?.name}</h1>
+      <h1 className="text-xl font-semibold">{testData?.[0]?.name}</h1>
       <h2>{testData?.[0]?.description}</h2>
     </>
   );
