@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 //? Controllers
+const testController = require("./controllers/testController");
 //
 //
 
@@ -22,6 +23,7 @@ mongoose.connection.once("open", () => {
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
+app.use("/test", testController);
 //
 //
 
