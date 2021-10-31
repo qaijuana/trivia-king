@@ -10,18 +10,46 @@ const session = require("express-session")
 const sessionsController = require("./controllers/sessions_controller.js");
 //
 //
+///////////////////////////////////////////////
+// CONNECT TO MONGO ATLAS
+///////////////////////////////////////////////
+mongoose.Promise = global.Promise
+const cloud = process.env.Atlas
+const db = mongoose.connection
+mongoose.connect(
+  cloud,
+  {useNewUrlParser: true, useUnifiedTopology:true},
+  () => {console.log("mongo cloud connection established")}
+)
+// ERROR / SUCCESS
+db.on('error', (err) => console.log(err.message + ' is Mongod not running?'))
+db.on('connected', () => console.log('mongo connected: ', cloud))
+db.on('disconnected', () => console.log('mongo disconnected'))
+///////////////////////////////////////////////
+// END of CONNECT TO MONGO ATLAS
+///////////////////////////////////////////////
+
 
 //* Config
 // const PASSWORD = anFbOQsQYv1M45Uw;
 const app = express();
 const port = process.env.PORT ?? 3001;
-const MONGODB_URI =
-  process.env.MONGODB_URI ?? `mongodb://localhost:27017/trivia`;
-//! change database host to atlas mongodb database @Qai
-mongoose.connect(MONGODB_URI);
-mongoose.connection.once("open", () => {
-  console.log("connected to mongoose..." + MONGODB_URI);
-});
+///////////////////////////////////////////////
+// commenting out Qai's local database to connect Atlas
+///////////////////////////////////////////////
+// const MONGODB_URI =
+//   process.env.MONGODB_URI ?? `mongodb://localhost:27017/trivia`;
+// //! change database host to atlas mongodb database @Qai
+// mongoose.connect(MONGODB_URI);
+// mongoose.connection.once("open", () => {
+//   console.log("connected to mongoose..." + MONGODB_URI);
+// });
+///////////////////////////////////////////////
+// END OF commenting out local database to connect Atlas
+///////////////////////////////////////////////
+
+
+
 
 //* Middleware
 app.use(express.static(path.join(__dirname, "./client/build")));
