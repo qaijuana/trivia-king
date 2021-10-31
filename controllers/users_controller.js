@@ -30,13 +30,13 @@ router.get("/seed", async (req, res) => {
   await herman.save();
 
   const qai = new User();
-  qai.username = "tyler111"
+  qai.username = "qai111"
   qai.password = await bcrypt.hash("qai111", 10);
   qai.email = "qai@triviaking.com"
   await qai.save();
 
   const tyler = new User();
-  tyler.username = "qai111"
+  tyler.username = "tyler111"
   tyler.password = await bcrypt.hash("tyler111", 10);
   tyler.email = "tyler@triviaking.com"
   await tyler.save();
