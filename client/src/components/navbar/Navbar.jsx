@@ -33,17 +33,25 @@ const Navbar = () => {
                 </NavLink>
               </div>
               <div className="hidden md:flex items-center py-3 space-x-3 text-sm">
-                <NavLink to="/" className="text-white hover:text-red-700">
+                {/* Change username to current username */}
+                <NavLink
+                  to="/user/:username/myQuizzes"
+                  className="text-white hover:text-red-700"
+                >
                   My Quizzes
                 </NavLink>
-                <NavLink to="/" className="text-white hover:text-red-700">
+                <NavLink
+                  to="/quiz/new"
+                  className="text-white hover:text-red-700"
+                >
                   New Quiz
                 </NavLink>
               </div>
             </div>
             <div className="hidden md:flex items-center py-3 space-x-3 mr-2 text-sm">
+              {/* Change username to current username */}
               <NavLink
-                to="/"
+                to="/user/:username"
                 className="flex items-center text-white hover:text-red-700"
               >
                 <span>Username</span>
@@ -51,12 +59,12 @@ const Navbar = () => {
                   <PersonIcon className="w-5 h-5 ml-1" />
                 </span>
               </NavLink>
-              <NavLink to="/" className="text-white">
+              <NavLink to="/login" className="text-white">
                 <button className="rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700">
                   Log In
                 </button>
               </NavLink>
-              <NavLink to="/" className="text-white">
+              <NavLink to="/signup" className="text-white">
                 <button className="rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700">
                   Sign Up
                 </button>
@@ -72,20 +80,24 @@ const Navbar = () => {
         </div>
         {/* mobile menu */}
 
+        {/* Change username to current username */}
         <div className={navMenu + " md:hidden pb-3"}>
-          <NavLink to="/" className="block py-2 px-4 text-white">
+          <NavLink to="/user/:username" className="block py-2 px-4 text-white">
             Profile
           </NavLink>
-          <NavLink to="/" className="block py-2 px-4 text-white">
+          <NavLink
+            to="/user/:username/myQuizzes"
+            className="block py-2 px-4 text-white"
+          >
             My Quizzes
           </NavLink>
-          <NavLink to="/" className="block py-2 px-4 text-white">
+          <NavLink to="/quiz/new" className="block py-2 px-4 text-white">
             New Quiz
           </NavLink>
-          <NavLink to="/" className="block py-2 px-4 text-white">
+          <NavLink to="/login" className="block py-2 px-4 text-white">
             Log In
           </NavLink>
-          <NavLink to="/" className="block py-2 px-4 text-white">
+          <NavLink to="/signup" className="block py-2 px-4 text-white">
             Sign Up
           </NavLink>
         </div>
