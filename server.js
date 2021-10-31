@@ -1,9 +1,12 @@
 //* Dependencies
+require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override")
 //? Controllers
 const testController = require("./controllers/testController");
+const quizController = require("./controllers/quiz")
 //
 //
 
@@ -20,10 +23,14 @@ mongoose.connection.once("open", () => {
 });
 
 //* Middleware
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
 app.use("/api/test", testController);
+app.use("/quiz", quizController)
 //
 //
 
@@ -31,6 +38,8 @@ app.use("/api/test", testController);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+
 
 //* Start Server to listen
 app.listen(port, () => {
