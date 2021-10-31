@@ -3,11 +3,13 @@ const dotenv = require('dotenv').config()
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override")
 //? Controllers
 const testController = require("./controllers/testController");
 const userController = require("./controllers/users_controller.js");
 const session = require("express-session")
 const sessionsController = require("./controllers/sessions_controller.js");
+const triviaController = require("./controllers/trivia_controller")
 //
 //
 
@@ -24,6 +26,8 @@ mongoose.connection.once("open", () => {
 });
 
 //* Middleware
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
@@ -37,6 +41,7 @@ app.use(
   })
 );
 app.use("/sessions", sessionsController);
+app.use("/trivia", triviaController)
 //
 //
 
