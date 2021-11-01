@@ -19,7 +19,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="bg-red-400">
+      <nav className="bg-red-400 fixed w-full z-10">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-between">
             <div className="flex space-x-5">
@@ -41,7 +41,7 @@ const Navbar = () => {
                   My Quizzes
                 </NavLink>
                 <NavLink
-                  to="/quiz/new"
+                  to="/trivia/new"
                   className="text-white hover:text-red-700"
                 >
                   New Quiz
@@ -91,7 +91,7 @@ const Navbar = () => {
           >
             My Quizzes
           </NavLink>
-          <NavLink to="/quiz/new" className="block py-2 px-4 text-white">
+          <NavLink to="/trivia/new" className="block py-2 px-4 text-white">
             New Quiz
           </NavLink>
           <NavLink to="/login" className="block py-2 px-4 text-white">
