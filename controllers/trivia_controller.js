@@ -41,20 +41,10 @@ router.get("/seed", async (req, res) => {
 
 })
 
-
-
 router.post("/", async (req, res) => {
-    console.log(req.body)
-    let correctAnswer = null
-    if (req.body.answer_1 === "on") {
-        correctAnswer = req.body.choice_1
-    } else if (req.body.answer_2 === "on") {
-        correctAnswer = req.body.choice_2
-    } else if (req.body.answer_3 === "on") {
-        correctAnswer = req.body.choice_3
-    } else if (req.body.answer_4 === "on") {
-        correctAnswer = req.body.choice_4
-    }
+    console.log(req);
+    console.log(req.body);
+
     const trivia_questions = [{
         question: req.body.question,
         choices: [req.body.choice_1, req.body.choice_2, req.body.choice_3, req.body.choice_4],
