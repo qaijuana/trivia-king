@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="bg-red-400 fixed w-full z-10">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl lg:max-w-7xl mx-auto">
           <div className="flex justify-between">
             <div className="flex space-x-5">
               <div className="flex py-3">
