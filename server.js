@@ -16,7 +16,7 @@ const triviaController = require("./controllers/trivia_controller")
 // CONNECT TO MONGO ATLAS
 ///////////////////////////////////////////////
 mongoose.Promise = global.Promise
-const cloud = process.env.Atlas
+const cloud = process.env.ATLAS
 const db = mongoose.connection
 mongoose.connect(
   cloud,
@@ -25,7 +25,7 @@ mongoose.connect(
 )
 // ERROR / SUCCESS
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'))
-db.on('connected', () => console.log('mongo connected: ', cloud))
+db.on('connected', () => console.log('mongo connected'))
 db.on('disconnected', () => console.log('mongo disconnected'))
 ///////////////////////////////////////////////
 // END of CONNECT TO MONGO ATLAS
@@ -60,7 +60,7 @@ app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
 app.use("/api/test", testController);
-app.use("/users", userController);
+app.use("/api/users", userController);
 app.use(
   session({
     secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
@@ -68,8 +68,8 @@ app.use(
     saveUninitialized: false, // default  more info: https://www.npmjs.com/package/express-session#resave
   })
 );
-app.use("/sessions", sessionsController);
-app.use("/trivia", triviaController)
+app.use("/api/sessions", sessionsController);
+app.use("/api/trivia", triviaController)
 //
 //
 
