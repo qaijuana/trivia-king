@@ -85,6 +85,14 @@ router.get("/:id/like", async (req, res) => {
       res.send("like")
     });
     
+    router.get("/:id/unlike", async (req, res) => {
+        await User.findByIdAndUpdate("617f8755039827ace01e9b4e", {
+          $pull: { liked_trivia: req.params },
+        });
+        await Trivia.findByIdAndUpdate(req.params.id, {$inc: {likes: -1}})
+      //   await Trivia.findByIdAndUpdate(req.params.id, {likes: 1})
+        res.send("unlike")
+      });
 
 
 router.get("/:id", async (req, res) => {
