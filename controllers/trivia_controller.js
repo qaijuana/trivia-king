@@ -8,7 +8,37 @@ router.get("/", async (req, res) => {
 })
 
 router.get("/seed", async (req, res) => {
-    
+    const trivia = await Trivia.create(
+        {
+            title: "Colors",
+            description: "Colors of the world",
+            category: "General Knowledge",
+            tags: [
+                "colors",
+                "general knowledge",
+                "rainbow",
+            ],
+            trivia_questions: [
+                {
+                    question: "What colors is the green grass?",
+                    choices: ["red", "blue", "green", "yellow"],
+                    correctAnswer: "green"
+                },
+                {
+                    question: "what color is the yellow ball?",
+                    choices: ["blue", "yellow", "red", "green"],
+                    correctAnswer: "yellow"
+                },
+                {
+                    question: "What color is the blue sky?",
+                    choices: ["yellow", "green", "red", "blue"],
+                    correctAnswer: "blue"
+                }
+            ]
+        }
+    )
+    res.redirect("/api/trivia")
+
 })
 
 
@@ -43,8 +73,6 @@ router.post("/", async (req, res) => {
     res.json(trivia)
 })
 
-
-
 router.get("/new", (req, res) => {
     res.render("trivia/new.ejs")
 })
@@ -57,7 +85,7 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     let correctAnswer = null
-    if (req.body.answer_1 === "on") {
+    if (req.body.answer_1 === "on") {x
         correctAnswer = req.body.choice_1
     } else if (req.body.answer_2 === "on") {
         correctAnswer = req.body.choice_2
