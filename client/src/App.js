@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 //* Import Components
 // import Test from "./components/Test";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
