@@ -1,11 +1,13 @@
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
+import Sform from "./components/FormTest/SForm"
 
 //* Import Components
 // import Test from "./components/Test";
 import Navbar from "./components/navbar/Navbar";
 
 function App() {
+
   return (
     <div className="App">
       <Navbar />
@@ -14,7 +16,9 @@ function App() {
         <Route exact path="/"></Route>
         <Route path="/login"></Route>
         <Route path="/signup"></Route>
-        <Route path="/quiz/new"></Route>
+        <Route path="/quiz/new">
+          <Sform/>
+        </Route>
         <Route path="/quiz/:quizId/play"></Route>
         <Route path="/quiz/:quizId/results"></Route>
         <Route path="/quiz/:quizId/edit"></Route>

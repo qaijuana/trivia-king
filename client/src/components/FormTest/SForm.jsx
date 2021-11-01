@@ -24,7 +24,7 @@ const Sform = () => {
 
     return (
         <div>
-            {JSON.stringify(trivia)}
+            
 
         </div>
     )
