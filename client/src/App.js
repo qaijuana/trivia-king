@@ -1,5 +1,6 @@
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
+import Homepage from "./pages/Homepage";
 
 //* Import Components
 // import Test from "./components/Test";
@@ -11,7 +12,9 @@ function App() {
       <Navbar />
       {/* <Test /> */}
       <Switch>
-        <Route exact path="/"></Route>
+        <Route exact path="/">
+          <Homepage />
+        </Route>
         <Route path="/login"></Route>
         <Route path="/signup"></Route>
         <Route path="/quiz/new"></Route>
