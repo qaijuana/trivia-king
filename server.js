@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
 app.use("/api/test", testController);
-app.use("/users", userController);
+app.use("/api/users", userController);
 app.use(
   session({
     secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
