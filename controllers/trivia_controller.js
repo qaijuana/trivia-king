@@ -2,13 +2,19 @@ const express = require("express");
 const Trivia = require("../models/trivia_model")
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.render("trivia/index.ejs")
+router.get("/", async (req, res) => {
+    const trivia = await Trivia.find({})
+    res.json(trivia);
 })
 
-router.post("/", (req, res) => {
-    console.log(req.body)
+router.get("/seed", async (req, res) => {
     
+})
+
+
+
+router.post("/", async (req, res) => {
+    console.log(req.body)
     let correctAnswer = null
     if (req.body.answer_1 === "on") {
         correctAnswer = req.body.choice_1
@@ -19,22 +25,60 @@ router.post("/", (req, res) => {
     } else if (req.body.answer_4 === "on") {
         correctAnswer = req.body.choice_4
     }
-
     const trivia_questions = [{
         question: req.body.question,
         choices: [req.body.choice_1, req.body.choice_2, req.body.choice_3, req.body.choice_4],
         correctAnswer: correctAnswer
     }]
 
+    const context = {
+        title: req.body.title,
+        description: req.body.description,
+        category: req.body.category,
+        tags: [req.body.tags],
+        trivia_questions: trivia_questions,
+    }
 
-    console.log(trivia_questions)
-
-    res.redirect("/trivia")
+    const trivia = await Trivia.create(context)
+    res.json(trivia)
 })
+
+
 
 router.get("/new", (req, res) => {
     res.render("trivia/new.ejs")
 })
 
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    const trivia = await Trivia.findById(id);
+    res.json(trivia);
+})
+
+router.put("/:id", async (req, res) => {
+    let correctAnswer = null
+    if (req.body.answer_1 === "on") {
+        correctAnswer = req.body.choice_1
+    } else if (req.body.answer_2 === "on") {
+        correctAnswer = req.body.choice_2
+    } else if (req.body.answer_3 === "on") {
+        correctAnswer = req.body.choice_3
+    } else if (req.body.answer_4 === "on") {
+        correctAnswer = req.body.choice_4
+    }
+    const { id } = req.params;
+    const trivia = await Trivia.findByIdAndUpdate(id, req.body);
+    res.json(trivia);
+})
+
+router.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await Trivia.findByIdAndDelete(id)
+        res.json(result);
+    } catch (error) {
+        res.json({ error });
+    }
+})
 
 module.exports = router
