@@ -1,12 +1,12 @@
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-
+import LoginPage from "./pages/LoginPage";
 
 //* Import Components
 // import Test from "./components/Test";
 import Navbar from "./components/navbar/Navbar";
-import NewTrivia from "./components/FormTest/NewTrivia"
+// import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
   return (
@@ -19,7 +19,9 @@ function App() {
           <Route exact path="/">
             <Homepage />
           </Route>
-          <Route path="/login"></Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
           <Route path="/signup"></Route>
           <Route path="/trivia/new"></Route>
           <Route path="/trivia/:triviaId/play"></Route>
@@ -35,7 +37,6 @@ function App() {
           </Route>
         </Switch>
       </div>
-
     </div>
   );
 }

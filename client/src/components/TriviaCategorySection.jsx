@@ -2,23 +2,11 @@ import SectionTitle from "./SectionTitle";
 import TriviaCard from "./TriviaCard";
 import { useState } from "react";
 import trivias from "../fakeData.js";
+import SeeMoreButton from "./SeeMoreButton";
 
 const TriviaCategorySection = (props) => {
   const [showAmount, setShowAmount] = useState(3);
   const [seeMoreButtonText, setSeeMoreButtonText] = useState("See More");
-
-  const SeeMoreButton = (props) => {
-    return (
-      <>
-        <button
-          onClick={() => props.onClick()}
-          className="bg-red-600 rounded-lg text-white px-2"
-        >
-          {props.text}
-        </button>
-      </>
-    );
-  };
 
   const handleSeeMore = () => {
     if (showAmount === 3) {

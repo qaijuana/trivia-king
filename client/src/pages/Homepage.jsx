@@ -24,7 +24,7 @@ const Homepage = () => {
   return (
     <>
       <div className="max-w-4xl lg:max-w-7xl mx-auto pt-4 px-4 sm:pt-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-1">
+        <div className="grid grid-cols-1 gap-1 justity-items-start">
           <SectionTitle title="Featured" />
           <Jumbotron />
         </div>
