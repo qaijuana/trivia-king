@@ -2,15 +2,18 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 
+
 //* Import Components
 // import Test from "./components/Test";
 import Navbar from "./components/navbar/Navbar";
+import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       {/* <Test /> */}
+
       <div className="pt-14">
         <Switch>
           <Route exact path="/">
@@ -32,6 +35,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+
     </div>
   );
 }
