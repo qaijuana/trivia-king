@@ -1,53 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
-const URL = "/api/trivia/";
+const URL = "/api/trivia/"
 
 const NewTrivia = () => {
-  // const [trivia, setTrivia] = useState([]);
-  // const [status, setStatus] = useState("pending");
-
-
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //         setStatus("Loading");
-  //         const res = await fetch(URL);
-  //         const data = await res.json();
-  //         setTrivia(data);
-  //         setStatus("resolved");
-  //     };
-  //     fetchData();
-
-  // }, [])
-  // console.log(trivia);
-
-  // function handleSubmit(e) {
-  //     e.preventDefault();
-  //     const data = e.target;
-  //     const newTrivia = {
-  //         title: data.title,
-  //         description: data.description,
-  //         category: data.category,
-  //         tags: [data.tags],
-  //     }
-  // }
-  // function handleQuestion(e) {
-  //     e.preventDefault();
-  //     const data = e.target
-  //     const trivia_question = [{
-  //         question: data.questions,
-  //         choices: []
-  //     }]
-  // }
-
-  return (
-    <div className="container">
-      <h1>Hello!</h1>
-      <div class="container">
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="title" />
-          <input type="textarea" name="description" />
-          <input type="text" name="category" />
-          <input type="text" name="tags" />
 
     const [trivia, setTrivia] = useState([]);
     const [status, setStatus] = useState("pending");
@@ -74,11 +29,11 @@ const NewTrivia = () => {
                 "Content-Type": "application/json",
             },
         })
-        .then((res) => res.json())
-        .then((resJson) => {
-            console.log(resJson)  
-        })
-        .catch((error) => console.error({Error: error}))
+            .then((res) => res.json())
+            .then((resJson) => {
+                console.log(resJson)
+            })
+            .catch((error) => console.error({ Error: error }))
     }
 
     function handleSubmit(e) {
@@ -110,7 +65,7 @@ const NewTrivia = () => {
         } else if (data.answer[3].checked) {
             correctAnswer = data.choice_4.value;
         }
-        
+
         setTrivia_question([...trivia_question, {
             question: data.question.value,
             choices: [data.choice_1.value, data.choice_2.value, data.choice_3.value, data.choice_4.value],
@@ -122,27 +77,6 @@ const NewTrivia = () => {
     }
     console.log(trivia_question)
 
-          <input type="text" name="question" />
-          <input type="radio" name="answer_1">
-            <input type="text" name="choice_1" />
-          </input>
-          <input type="radio" name="answer_2">
-            <input type="text" name="choice_2" />
-          </input>
-          <input type="radio" name="answer_3">
-            <input type="text" name="choice_3" />
-          </input>
-          <input type="radio" name="answer_4">
-            <input type="text" name="choice_4" />
-          </input>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-
-export default NewTrivia;
 
     return (
 
@@ -166,30 +100,30 @@ export default NewTrivia;
                 <form onSubmit={handleQuestion}>
                     <label for="question">Question</label>
                     <br />
-                    <input type="text" name="question" className="border border-black-600"/>
+                    <input type="text" name="question" className="border border-black-600" />
                     <br />
 
-                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
                     <label for="answer">
                         <input type="text" name="choice_1" className="border border-black-600" placeholder="Choice 1" />
                     </label>
                     <br />
-                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
                     <label for="answer">
-                        <input type="text" name="choice_2" className="border border-black-600" placeholder="Choice 2"/>
+                        <input type="text" name="choice_2" className="border border-black-600" placeholder="Choice 2" />
                     </label>
                     <br />
-                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
                     <label for="answer">
                         <input type="text" name="choice_3" className="border border-black-600" placeholder="Choice 3" />
                     </label>
                     <br />
-                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
                     <label for="answer">
                         <input type="text" name="choice_4" className="border border-black-600" placeholder="Choice 4" />
                     </label>
                     <br />
-                    <input type="submit" value="Add Question"/>
+                    <input type="submit" value="Add Question" />
 
                 </form>
             </div>
@@ -200,4 +134,3 @@ export default NewTrivia;
 }
 
 export default NewTrivia;
-
