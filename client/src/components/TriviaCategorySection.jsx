@@ -3,7 +3,7 @@ import TriviaCard from "./TriviaCard";
 import { useState } from "react";
 import trivias from "../fakeData.js";
 
-const TriviaCategorySection = () => {
+const TriviaCategorySection = (props) => {
   const [showAmount, setShowAmount] = useState(3);
   const [seeMoreButtonText, setSeeMoreButtonText] = useState("See More");
 
@@ -61,7 +61,7 @@ const TriviaCategorySection = () => {
     <>
       <div className="mb-5">
         <div className="flex justify-start">
-          <SectionTitle title="Category Name" />
+          <SectionTitle title={props.category} />
           <SeeMoreButton onClick={handleSeeMore} text={seeMoreButtonText} />
         </div>
         {/* Show Trivias within Category */}

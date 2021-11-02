@@ -1,7 +1,6 @@
-import { useState } from "react";
 import ShowCategories from "./ShowCategories";
 
-const TriviaFilter = () => {
+const TriviaFilter = (props) => {
   const SearchTriviaTitle = (props) => {
     return (
       <>
@@ -12,29 +11,13 @@ const TriviaFilter = () => {
     );
   };
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
-
-  const handleChange = async (event) => {
-    console.log(event.target.checked);
-    if (event.target.checked) {
-      setSelectedCategories([...selectedCategories, event.target.value]);
-    } else {
-      setSelectedCategories(
-        selectedCategories.filter((item) => {
-          return item !== event.target.value;
-        })
-      );
-    }
-    await console.log("all selected", selectedCategories);
-  };
-
   return (
     <div className="lg:sticky lg:top-20 lg:col-span-1 lg:h-screen">
       <div className="h-auto lg:max-h-80vh lg:overflow-y-scroll rounded-lg border-2 border-solid border-red-600 p-4">
         <div className="">
           <div>
             <SearchTriviaTitle title="Categories" />
-            <ShowCategories handleChange={handleChange} />
+            <ShowCategories handleChange={props.handleChange} />
             {/* <input type="submit" value="submit" /> */}
           </div>
           <div className="pt-3">
