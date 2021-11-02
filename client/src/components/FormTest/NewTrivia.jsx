@@ -6,7 +6,7 @@ const NewTrivia = () => {
 
     const [trivia, setTrivia] = useState([]);
     const [status, setStatus] = useState("pending");
-    const [triviaQ, setTriviaQ] = useState([])
+    const [trivia_question, setTrivia_question] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,38 +38,44 @@ const NewTrivia = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("hello")
+        // console.log(e)
         const data = e.target;
         const newTrivia = {
-            title: data.title,
-            description: data.description,
-            category: data.category,
-            tags: [data.tags],
+            title: data.title.value,
+            description: data.description.value,
+            category: data.category.value,
+            tags: [data.tags.value],
+            trivia_question: trivia_question
         }
-        createTrivia(newTrivia)
+        // createTrivia(newTrivia)
+        console.log("new trivia", newTrivia)
     }
 
     function handleQuestion(e) {
         e.preventDefault();
         const data = e.target;
-        console.log(data)
+
         let correctAnswer = null;
-        if (data.answer_1.value === "on") {
+        if (data.answer[0].checked) {
             correctAnswer = data.choice_1.value;
-        } else if (data.answer_2.value === "on") {
+        } else if (data.answer[1].checked) {
             correctAnswer = data.choice_2.value;
-        } else if (data.answer_3.value === "on") {
+        } else if (data.answer[2].checked) {
             correctAnswer = data.choice_3.value;
-        } else if (data.answer_4.value === "on") {
+        } else if (data.answer[3].checked) {
             correctAnswer = data.choice_4.value;
         }
-        const trivia_question = [{
+        
+        setTrivia_question([...trivia_question, {
             question: data.question.value,
             choices: [data.choice_1.value, data.choice_2.value, data.choice_3.value, data.choice_4.value],
             correctAnswer: correctAnswer
-        }]
-        console.log(trivia_question)
+        }])
+
+
+
     }
+    console.log(trivia_question)
 
 
     return (
@@ -88,38 +94,33 @@ const NewTrivia = () => {
                     <br />
                     <input type="text" name="tags" placeholder="tag" className="border border-black-600" />
                     <br />
-                    <input type="text" name="question" placeholder="question" className="border border-black-600" />
-                    <br />
                     <button>Add</button>
                 </form>
 
                 <form onSubmit={handleQuestion}>
                     <label for="question">Question</label>
+                    <br />
                     <input type="text" name="question" className="border border-black-600"/>
                     <br />
 
-                    <input type="radio" name="answer_1" className="border border-black-600 form-radio"/>
-                    <label for="answer_1">
-                        <label for="choice_1">Choice 1</label>
-                        <input type="text" name="choice_1" className="border border-black-600"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <label for="answer">
+                        <input type="text" name="choice_1" className="border border-black-600" placeholder="Choice 1" />
                     </label>
                     <br />
-                    <input type="radio" name="answer_2" className="border border-black-600 form-radio"/>
-                    <label for="answer_2">
-                        <label for="choice_2">Choice 2</label>
-                        <input type="text" name="choice_2" className="border border-black-600"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <label for="answer">
+                        <input type="text" name="choice_2" className="border border-black-600" placeholder="Choice 2"/>
                     </label>
                     <br />
-                    <input type="radio" name="answer_3" className="border border-black-600 form-radio"/>
-                    <label for="answer_3">
-                        <label for="choice_3">Choice 3</label>
-                        <input type="text" name="choice_3" className="border border-black-600"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <label for="answer">
+                        <input type="text" name="choice_3" className="border border-black-600" placeholder="Choice 3" />
                     </label>
                     <br />
-                    <input type="radio" name="answer_4" className="border border-black-600 form-radio"/>
-                    <label for="answer_4">
-                        <label for="choice_4">Choice 4</label>
-                        <input type="text" name="choice_4" className="border border-black-600"/>
+                    <input type="radio" name="answer" className="border border-black-600 form-radio"/>
+                    <label for="answer">
+                        <input type="text" name="choice_4" className="border border-black-600" placeholder="Choice 4" />
                     </label>
                     <br />
                     <input type="submit" value="Add Question"/>
