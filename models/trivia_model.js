@@ -43,7 +43,8 @@ const triviaSchema = new mongoose.Schema({
         trim: true,
       },
     },
-  ],
+  ], 
+  likes: {type: Number, min:0}
 });
 
 const Trivia = mongoose.model("Trivia", triviaSchema);

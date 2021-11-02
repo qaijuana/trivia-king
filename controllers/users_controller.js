@@ -27,18 +27,21 @@ router.get("/seed", async (req, res) => {
   herman.username = "herman111"
   herman.password = await bcrypt.hash("herman111", 10);
   herman.email = "herman@triviaking.com"
+  herman.liked_trivia = []
   await herman.save();
 
   const qai = new User();
   qai.username = "qai111"
   qai.password = await bcrypt.hash("qai111", 10);
   qai.email = "qai@triviaking.com"
+  qai.liked_trivia = []
   await qai.save();
 
   const tyler = new User();
   tyler.username = "tyler111"
   tyler.password = await bcrypt.hash("tyler111", 10);
   tyler.email = "tyler@triviaking.com"
+  tyler.liked_trivia = []
   await tyler.save();
 
   res.send(herman, qai, tyler)
