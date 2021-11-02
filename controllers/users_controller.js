@@ -68,4 +68,18 @@ router.get("/seed", async (req, res) => {
   res.send(herman, qai, tyler);
 });
 
+// LOGIN ROUTE
+router.post("/login", async (req,res) => {
+  const {username, password} = req.body
+  // basic validation
+  if(!username || !password) { return res.status(400).json({msg:"please enter all fields"})}
+  // check if registered
+  const user = await User.findOne({username})
+  if (!user) {return res.status(400).json({msg: "user does not exist"})}
+  //validate password
+  const result = await bcrypt.compare(password, user.password)
+  if (result) {req.session.loginUser = user}
+})
+
+
 module.exports = router;
