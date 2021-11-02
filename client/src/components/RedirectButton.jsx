@@ -5,7 +5,7 @@ const RedirectButton = (props) => {
     <>
       <Link to={"/" + props.link} className="w-full">
         <button className="bg-red-600 text-white text-sm rounded-lg w-full my-4 py-2 hover:bg-red-700">
-          {props.link}
+          {props.text}
         </button>
       </Link>
     </>

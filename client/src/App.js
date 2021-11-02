@@ -2,6 +2,7 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 //* Import Components
 // import Test from "./components/Test";
@@ -22,7 +23,9 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <Route path="/signup"></Route>
+          <Route path="/signup">
+            <SignupPage />
+          </Route>
           <Route path="/trivia/new"></Route>
           <Route path="/trivia/:triviaId/play"></Route>
           <Route path="/trivia/:triviaId/results"></Route>
