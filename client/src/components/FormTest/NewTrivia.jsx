@@ -75,17 +75,14 @@ const NewTrivia = () => {
             choices: [data.choice_1.value, data.choice_2.value, data.choice_3.value, data.choice_4.value],
             correctAnswer: correctAnswer
         }])
-
+        
+        data.question.value = "";
         data.choice_1.value = "";
         data.choice_2.value = "";
         data.choice_3.value = "";
         data.choice_4.value = "";
 
-
-
-
     }
-    console.log(trivia_question)
 
 
     return (

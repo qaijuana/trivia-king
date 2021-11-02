@@ -38,24 +38,7 @@ router.get("/seed", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
-
-
-
-
-//   const trivia_questions = {
-//       question: req.body.question
-//       choice: [req.choice]
-//   }
-
-//   const context = {
-//     title: req.body.title,
-//     description: req.body.description,
-//     category: req.body.category,
-//     tags: [req.body.tags],
-//     trivia_questions: trivia_questions,
-//   };
-
+  console.log("backend reqbody", req.body);
   const trivia = await Trivia.create(req.body);
   res.json(trivia);
 });
