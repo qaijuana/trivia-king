@@ -14,6 +14,7 @@ router.get("/seed", async (req, res) => {
     title: "Colors",
     description: "Colors of the world",
     category: "General Knowledge",
+      images: "https://www.readersdigest.ca/wp-content/uploads/2020/03/color-quiz.jpg",
     tags: ["colors", "general knowledge", "rainbow"],
     trivia_questions: [
       {
@@ -38,39 +39,24 @@ router.get("/seed", async (req, res) => {
 
 router.post("/", async (req, res) => {
   console.log(req.body);
-  let correctAnswer = null;
-  if (req.body.answer_1 === "on") {
-    correctAnswer = req.body.choice_1;
-  } else if (req.body.answer_2 === "on") {
-    correctAnswer = req.body.choice_2;
-  } else if (req.body.answer_3 === "on") {
-    correctAnswer = req.body.choice_3;
-  } else if (req.body.answer_4 === "on") {
-    correctAnswer = req.body.choice_4;
-  }
-  const trivia_questions = [
-    {
-      question: req.body.question,
-      choices: [
-        req.body.choice_1,
-        req.body.choice_2,
-        req.body.choice_3,
-        req.body.choice_4,
-      ],
-      correctAnswer: correctAnswer,
-    },
-  ];
 
 
-  const context = {
-    title: req.body.title,
-    description: req.body.description,
-    category: req.body.category,
-    tags: [req.body.tags],
-    trivia_questions: trivia_questions,
-  };
 
-  const trivia = await Trivia.create(context);
+
+//   const trivia_questions = {
+//       question: req.body.question
+//       choice: [req.choice]
+//   }
+
+//   const context = {
+//     title: req.body.title,
+//     description: req.body.description,
+//     category: req.body.category,
+//     tags: [req.body.tags],
+//     trivia_questions: trivia_questions,
+//   };
+
+  const trivia = await Trivia.create(req.body);
   res.json(trivia);
 });
 

@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 //* Import Components
 // import Test from "./components/Test";
 import Navbar from "./components/navbar/Navbar";
+import NewTrivia from "./components/FormTest/NewTrivia";
 // import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
             <LoginPage />
           </Route>
           <Route path="/signup"></Route>
-          <Route path="/trivia/new"></Route>
+          <Route path="/trivia/new">
+            <NewTrivia/>
+          </Route>
           <Route path="/trivia/:triviaId/play"></Route>
           <Route path="/trivia/:triviaId/results"></Route>
           <Route path="/trivia/:triviaId/edit"></Route>
