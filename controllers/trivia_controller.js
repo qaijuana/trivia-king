@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/seed", async (req, res) => {
+
   const trivia = await Trivia.create({
     title: "Colors",
     description: "Colors of the world",
@@ -59,6 +60,7 @@ router.post("/", async (req, res) => {
       correctAnswer: correctAnswer,
     },
   ];
+
 
   const context = {
     title: req.body.title,
