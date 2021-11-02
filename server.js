@@ -1,36 +1,37 @@
 //* Dependencies
-const dotenv = require('dotenv').config()
+const dotenv = require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const methodOverride = require("method-override")
+const methodOverride = require("method-override");
 //? Controllers
 const testController = require("./controllers/testController");
 const userController = require("./controllers/users_controller.js");
-const session = require("express-session")
+const session = require("express-session");
 const sessionsController = require("./controllers/sessions_controller.js");
-const triviaController = require("./controllers/trivia_controller")
+const triviaController = require("./controllers/trivia_controller");
 //
 //
 ///////////////////////////////////////////////
 // CONNECT TO MONGO ATLAS
 ///////////////////////////////////////////////
-mongoose.Promise = global.Promise
-const cloud = process.env.ATLAS
-const db = mongoose.connection
+mongoose.Promise = global.Promise;
+const cloud = process.env.ATLAS;
+const db = mongoose.connection;
 mongoose.connect(
   cloud,
-  {useNewUrlParser: true, useUnifiedTopology:true},
-  () => {console.log("mongo cloud connection established")}
-)
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("mongo cloud connection established");
+  }
+);
 // ERROR / SUCCESS
-db.on('error', (err) => console.log(err.message + ' is Mongod not running?'))
-db.on('connected', () => console.log('mongo connected'))
-db.on('disconnected', () => console.log('mongo disconnected'))
+db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
+db.on("connected", () => console.log("mongo connected"));
+db.on("disconnected", () => console.log("mongo disconnected"));
 ///////////////////////////////////////////////
 // END of CONNECT TO MONGO ATLAS
 ///////////////////////////////////////////////
-
 
 //* Config
 // const PASSWORD = anFbOQsQYv1M45Uw;
@@ -50,9 +51,6 @@ const port = process.env.PORT ?? 3001;
 // END OF commenting out local database to connect Atlas
 ///////////////////////////////////////////////
 
-
-
-
 //* Middleware
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
@@ -69,7 +67,7 @@ app.use(
   })
 );
 app.use("/api/sessions", sessionsController);
-app.use("/api/trivia", triviaController)
+app.use("/api/trivia", triviaController);
 //
 //
 
