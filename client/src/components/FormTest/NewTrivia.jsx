@@ -19,10 +19,11 @@ const NewTrivia = () => {
         fetchData();
 
     }, [])
+    console.log("trivia", trivia);
 
     function createTrivia(e) {
         console.log(e)
-        fetch("/trivia", {
+        fetch(URL, {
             method: "POST",
             body: JSON.stringify(e),
             headers: {
@@ -31,23 +32,22 @@ const NewTrivia = () => {
         })
             .then((res) => res.json())
             .then((resJson) => {
-                console.log(resJson)
+                console.log("resJson", resJson)
             })
             .catch((error) => console.error({ Error: error }))
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        // console.log(e)
         const data = e.target;
         const newTrivia = {
             title: data.title.value,
             description: data.description.value,
             category: data.category.value,
-            tags: [data.tags.value],
+            tags: data.tags.value.split(","),
             trivia_question: trivia_question
         }
-        // createTrivia(newTrivia)
+        createTrivia(newTrivia)
         console.log("new trivia", newTrivia)
     }
 
@@ -58,12 +58,16 @@ const NewTrivia = () => {
         let correctAnswer = null;
         if (data.answer[0].checked) {
             correctAnswer = data.choice_1.value;
+            data.answer[0].checked = false;
         } else if (data.answer[1].checked) {
             correctAnswer = data.choice_2.value;
+            data.answer[1].checked = false;
         } else if (data.answer[2].checked) {
             correctAnswer = data.choice_3.value;
+            data.answer[2].checked = false;
         } else if (data.answer[3].checked) {
             correctAnswer = data.choice_4.value;
+            data.answer[3].checked = false;
         }
 
         setTrivia_question([...trivia_question, {
@@ -71,24 +75,34 @@ const NewTrivia = () => {
             choices: [data.choice_1.value, data.choice_2.value, data.choice_3.value, data.choice_4.value],
             correctAnswer: correctAnswer
         }])
-
-
+        
+        data.question.value = "";
+        data.choice_1.value = "";
+        data.choice_2.value = "";
+        data.choice_3.value = "";
+        data.choice_4.value = "";
 
     }
-    console.log(trivia_question)
 
 
     return (
 
         <div className="container">
-            <h1>Hello!</h1>
 
-            <div class="container">
+            {
+                ////////////////////////
+                //! FORMS FOR TRIVIA W/O QUESTIONS
+                ////////////////////////
+            }
+
+            <div class="form-container">
                 <form onSubmit={handleSubmit}>
 
                     <input type="text" name="title" placeholder="title" className="border border-black-600" />
                     <br />
                     <input type="textarea" name="description" placeholder="description" className="border border-black-600" />
+                    <br />
+                    <input type="text" name="images" placeholder="images" className="border border-black-600" />
                     <br />
                     <input type="text" name="category" placeholder="category" className="border border-black-600" />
                     <br />
@@ -96,6 +110,13 @@ const NewTrivia = () => {
                     <br />
                     <button>Add</button>
                 </form>
+
+                {
+                ////////////////////////////
+                //! FORMS FOR QUESTIONS
+                /////////////////////////////
+                }
+
 
                 <form onSubmit={handleQuestion}>
                     <label for="question">Question</label>
@@ -127,6 +148,31 @@ const NewTrivia = () => {
 
                 </form>
             </div>
+
+
+            {
+                /////////////////////////
+                //! DISPLAY QUESTIONS ADDED
+                /////////////////////////
+            }
+            <ul>
+                {trivia_question.map((e, i) => {
+                    return (
+                        <li>
+                            <h1>{e.question}</h1>
+                            <img src={e.images} alt="" />
+                            <ul>
+                                {e.choices.map( (event) => {
+                                    return(
+                                        <li>{event}</li>
+                                    )
+                                })}
+                            </ul>
+
+                        </li>
+                    )
+                })}
+            </ul>
 
 
         </div>
