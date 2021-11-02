@@ -2,43 +2,6 @@ import { useState } from "react";
 import ShowCategories from "./ShowCategories";
 
 const TriviaFilter = () => {
-  const [categories, setCategories] = useState([]);
-
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     console.log(event.target);
-  //   };
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    // if (isChecked === "indeterminate") {
-    //   setCategories(
-    //     categories.filter((item) => {
-    //       return item !== title;
-    //     })
-    //   );
-    //   categories.filter((item) => console.log(item));
-    //   console.log("test", isChecked, title);
-    // } else {
-    //   setCategories([...categories, title]);
-    //   console.log("test", isChecked, title);
-    // }
-    // console.log("selected", categories);
-    // setCategories(selected);
-    //* ==========================
-    console.log("target", event.target);
-    console.log("checked?", event.target.checked);
-    event.target.checked
-      ? setCategories([...categories, { name: event.target.value }])
-      : // console.log(event.target.value)
-        setCategories(
-          categories.filter((item) => {
-            return item.name !== event.target.value;
-          })
-        );
-    console.log("selected", categories);
-  };
-
   const SearchTriviaTitle = (props) => {
     return (
       <>
@@ -49,17 +12,29 @@ const TriviaFilter = () => {
     );
   };
 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const handleChange = async (event) => {
+    console.log(event.target.checked);
+    if (event.target.checked) {
+      setSelectedCategories([...selectedCategories, event.target.value]);
+    } else {
+      setSelectedCategories(
+        selectedCategories.filter((item) => {
+          return item !== event.target.value;
+        })
+      );
+    }
+    await console.log("all selected", selectedCategories);
+  };
+
   return (
     <div className="lg:sticky lg:top-20 lg:col-span-1 lg:h-screen">
       <div className="h-auto lg:max-h-80vh lg:overflow-y-scroll rounded-lg border-2 border-solid border-red-600 p-4">
         <div className="">
           <div>
             <SearchTriviaTitle title="Categories" />
-
-            <ShowCategories
-              categories={categories}
-              handleChange={handleChange}
-            />
+            <ShowCategories handleChange={handleChange} />
             {/* <input type="submit" value="submit" /> */}
           </div>
           <div className="pt-3">
