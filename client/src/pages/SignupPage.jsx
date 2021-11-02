@@ -1,7 +1,7 @@
 import SectionTitle from "../components/SectionTitle";
 import * as Separator from "@radix-ui/react-separator";
 import UserDetailsInput from "../components/UserDetailsInput";
-import UserDetailsButton from "./UserDetailsButton";
+import UserDetailsButton from "../components/UserDetailsButton";
 import RedirectButton from "../components/RedirectButton";
 
 const SignupPage = () => {
