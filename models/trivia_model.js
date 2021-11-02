@@ -18,7 +18,7 @@ const triviaSchema = new mongoose.Schema({
   },
   tags: [
     {
-      type: String,
+      type: [String],
       required: true,
       trim: true,
     },
@@ -32,7 +32,7 @@ const triviaSchema = new mongoose.Schema({
       },
       choices: [
         {
-          type: String,
+          type: [String],
           required: true,
           trim: true,
         },
@@ -43,7 +43,8 @@ const triviaSchema = new mongoose.Schema({
         trim: true,
       },
     },
-  ],
+  ], 
+  likes: {type: Number, min:0}
 });
 
 const Trivia = mongoose.model("Trivia", triviaSchema);

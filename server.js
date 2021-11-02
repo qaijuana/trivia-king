@@ -3,18 +3,20 @@ const dotenv = require('dotenv').config()
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override")
 //? Controllers
 const testController = require("./controllers/testController");
 const userController = require("./controllers/users_controller.js");
 const session = require("express-session")
 const sessionsController = require("./controllers/sessions_controller.js");
+const triviaController = require("./controllers/trivia_controller")
 //
 //
 ///////////////////////////////////////////////
 // CONNECT TO MONGO ATLAS
 ///////////////////////////////////////////////
 mongoose.Promise = global.Promise
-const cloud = process.env.Atlas
+const cloud = process.env.ATLAS
 const db = mongoose.connection
 mongoose.connect(
   cloud,
@@ -23,7 +25,11 @@ mongoose.connect(
 )
 // ERROR / SUCCESS
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'))
+<<<<<<< HEAD
 db.on('connected', () => console.log('mongo connected: '))
+=======
+db.on('connected', () => console.log('mongo connected'))
+>>>>>>> development
 db.on('disconnected', () => console.log('mongo disconnected'))
 ///////////////////////////////////////////////
 // END of CONNECT TO MONGO ATLAS
@@ -52,6 +58,8 @@ const port = process.env.PORT ?? 3001;
 
 
 //* Middleware
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
@@ -64,7 +72,8 @@ app.use(
     saveUninitialized: false, // default  more info: https://www.npmjs.com/package/express-session#resave
   })
 );
-app.use("/sessions", sessionsController);
+app.use("/api/sessions", sessionsController);
+app.use("/api/trivia", triviaController)
 //
 //
 
