@@ -8,6 +8,7 @@ import NewquizPage from "./pages/NewquizPage";
 //* Import Components
 // import Test from "./components/Test";
 import Navbar from "./components/navbar/Navbar";
+import NewTrivia from "./components/FormTest/NewTrivia";
 // import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
@@ -24,12 +25,23 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
+
+
+          <Route path="/trivia/newTest">
+            <NewTrivia/>
+          </Route>
+
           <Route path="/signup">
             <SignupPage />
           </Route>
+
           <Route path="/trivia/new">
             <NewquizPage />
           </Route>
+
+
+
+
           <Route path="/trivia/:triviaId/play"></Route>
           <Route path="/trivia/:triviaId/results"></Route>
           <Route path="/trivia/:triviaId/edit"></Route>
