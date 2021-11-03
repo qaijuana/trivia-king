@@ -7,6 +7,7 @@ sessions.get("/new", (req, res) => {
   res.render("sessions/new.ejs", { currentUser: req.session.currentUser });
 });
 
+sessions.post("/", (req, res) => {
   // Step 1 Look for the username
   User.findOne({ username: req.body.username }, (err, foundUser) => {
     // Database error
