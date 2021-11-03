@@ -10,6 +10,8 @@ const userController = require("./controllers/users_controller.js");
 const session = require("express-session");
 const sessionsController = require("./controllers/sessions_controller.js");
 const triviaController = require("./controllers/trivia_controller");
+const MongoStore = require("connect-mongo")
+
 //
 //
 ///////////////////////////////////////////////
@@ -64,6 +66,15 @@ app.use(
     secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
     resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
     saveUninitialized: false, // default  more info: https://www.npmjs.com/package/express-session#resave
+    store: MongoStore.create({ //using mongoAtlas to store session
+      mongoUrl: process.env.ATLAS,
+      collection: 'session',
+      ttl: parseInt(process.env.SESS_LIFETIME) / 1000
+    }),
+    cookie: {
+      sameSite: true,
+      // secure: NODE_ENV === 'production',
+      maxAge: parseInt(process.env.SESS_LIFETIME)}
   })
 );
 app.use("/api/sessions", sessionsController);

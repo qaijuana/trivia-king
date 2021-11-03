@@ -20,17 +20,17 @@ router.get("/seed", async (req, res) => {
       {
         question: "What colors is the green grass?",
         choices: ["red", "blue", "green", "yellow"],
-        correctAnswer: "green",
+        correctAnswer: 2,
       },
       {
         question: "what color is the yellow ball?",
         choices: ["blue", "yellow", "red", "green"],
-        correctAnswer: "yellow",
+        correctAnswer: 1,
       },
       {
         question: "What color is the blue sky?",
         choices: ["yellow", "green", "red", "blue"],
-        correctAnswer: "blue",
+        correctAnswer: 3,
       },
     ],
   });
@@ -38,7 +38,7 @@ router.get("/seed", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  console.log("backend reqbody", req.body);
+  console.log("backend reqbody POST:", req.body);
   const trivia = await Trivia.create(req.body);
   res.json(trivia);
 });
@@ -73,19 +73,11 @@ router.get("/:id", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  let correctAnswer = null;
-  if (req.body.answer_1 === "on") {
-    x;
-    correctAnswer = req.body.choice_1;
-  } else if (req.body.answer_2 === "on") {
-    correctAnswer = req.body.choice_2;
-  } else if (req.body.answer_3 === "on") {
-    correctAnswer = req.body.choice_3;
-  } else if (req.body.answer_4 === "on") {
-    correctAnswer = req.body.choice_4;
-  }
+
+  console.log("reqbody PUT:", req.body)
   const { id } = req.params;
   const trivia = await Trivia.findByIdAndUpdate(id, req.body);
+  console.log("back end PUT trivia:", trivia)
   res.json(trivia);
 });
 
