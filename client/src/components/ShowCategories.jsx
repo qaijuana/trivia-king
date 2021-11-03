@@ -10,8 +10,11 @@ const ShowCategories = (props) => {
           onChange={props.handleChange}
           name="category"
           value={category}
+          className="text-red-600 border-red-600 focus:ring-red-600"
         />
-        <label htmlFor={index}>{category}</label>
+        <label htmlFor={index} className="ml-2">
+          {category}
+        </label>
       </div>
     );
   });
