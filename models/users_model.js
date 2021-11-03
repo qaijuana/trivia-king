@@ -54,7 +54,6 @@ userSchema.methods.comparePasswords = function (password) {
   return compareSync(password, this.password);
 };
 
-
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

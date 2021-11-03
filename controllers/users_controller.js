@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs")
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users_model.js");
-const Joi = require('joi'); 
+const Joi = require('joi');
 
 // USER SIGN-UP PAGE
 
@@ -66,7 +66,7 @@ router.get("/seed", async (req, res) => {
   await User.deleteMany({});
   const herman = new User();
   herman.username = "herman111";
-  herman.password = await bcrypt.hash("herman111", 10);
+  herman.password = bcrypt.hashSync("herman111", bcrypt.genSaltSync(10));
   herman.email = "herman@triviaking.com";
   herman.liked_trivia = [];
   herman.timestamp = Date.now;
@@ -74,7 +74,7 @@ router.get("/seed", async (req, res) => {
 
   const qai = new User();
   qai.username = "qai111";
-  qai.password = await bcrypt.hash("qai111", 10);
+  qai.password = bcrypt.hashSync("qai111", bcrypt.genSaltSync(10));
   qai.email = "qai@triviaking.com";
   qai.liked_trivia = [];
   qai.timestamp = Date.now;
@@ -82,7 +82,7 @@ router.get("/seed", async (req, res) => {
 
   const tyler = new User();
   tyler.username = "tyler111";
-  tyler.password = await bcrypt.hash("tyler111", 10);
+  tyler.password = bcrypt.hashSync("tyler111", bcrypt.genSaltSync(10));
   tyler.email = "tyler@triviaking.com";
   tyler.liked_trivia = [];
   tyler.timestamp = Date.now;
@@ -92,16 +92,52 @@ router.get("/seed", async (req, res) => {
 });
 
 // LOGIN ROUTE
-router.post("/login", async (req,res) => {
-  const {username, password} = req.body
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body
+  console.log("back end login: Req Body", req.body)
   // basic validation
-  if(!username || !password) { return res.status(400).json({msg:"please enter all fields"})}
+  if (!username || !password) { return res.status(400).json({ msg: "please enter all fields" }) }
   // check if registered
-  const user = await User.findOne({username})
-  if (!user) {return res.status(400).json({msg: "user does not exist"})}
+  const user = await User.findOne({ username })
+
+  console.log("user", user)
+
+  if (!user) { return res.status(400).json({ msg: "user does not exist" }) }
   //validate password
-  const result = await bcrypt.compare(password, user.password)
-  if (result) {req.session.loginUser = user}
+  console.log("user", username, "and password", password)
+  console.log("bcrypt", bcrypt.compareSync(password, user.password))
+
+  if (bcrypt.compareSync(password, user.password)) {
+    req.session.loginUser = user;
+    console.log("Success!")
+    res.send("Success!")
+  } else {
+    console.log("password mismatched")
+    res.send("password mismatched")
+  }
+
+
+  // User.findOne({ username }, (err, foundUser) => {
+  //   // Database error
+  //   if (err) {
+  //     console.log(err);
+  //     res.send("oops the db had a problem");
+  //   } else if (!foundUser) {
+  //     // if found user is undefined/null not found etc
+  //     res.send('<a  href="/">Sorry, no user found </a>');
+  //   } else {
+  //     // user is found yay!
+  //     // now let's check if passwords match
+  //     if (bcrypt.compareSync(password, foundUser.password)) {
+  //       // add the user to our session
+  //       req.session.currentUser = foundUser;
+  //       // redirect back to our home page
+  //       res.redirect("/");
+  //     } else {
+  //       // passwords do not match
+  //       res.send('<a href="/"> password does not match </a>');
+  //     }
+  //   }})
 })
 
 

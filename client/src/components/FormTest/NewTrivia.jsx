@@ -7,17 +7,39 @@ const NewTrivia = () => {
   const [status, setStatus] = useState("pending");
   const [trivia_question, setTrivia_question] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setStatus("Loading");
-      const res = await fetch(URL);
-      const data = await res.json();
-      setTrivia(data);
-      setStatus("resolved");
-    };
-    fetchData();
-  }, []);
-  console.log("trivia", trivia);
+
+    const [trivia, setTrivia] = useState([]);
+    const [status, setStatus] = useState("pending");
+    const [trivia_question, setTrivia_question] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setStatus("Loading");
+            const res = await fetch(URL);
+            const data = await res.json();
+            setTrivia(data);
+            setStatus("resolved");
+        };
+        fetchData();
+
+    }, [])
+    console.log("trivia", trivia);
+
+    function createTrivia(e) {
+        fetch(URL, {
+            method: "POST",
+            body: JSON.stringify(e),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((resJson) => {
+                console.log("resJson", resJson)
+            })
+            .catch((error) => console.error({ Error: error }))
+    }
+
 
   function createTrivia(e) {
     console.log(e);

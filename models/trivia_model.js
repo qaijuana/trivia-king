@@ -48,10 +48,10 @@ const triviaSchema = new mongoose.Schema({
         trim: true,
       },
     },
-  ], 
-  likes: {type: Number, min:0},
-  author: {type: String, required: true},
-}, {timestamp: true});
+  ],
+  likes: { type: Number, min: 0 },
+  author: { type: String },
+}, { timestamp: true });
 
 const Trivia = mongoose.model("Trivia", triviaSchema);
 module.exports = Trivia;
