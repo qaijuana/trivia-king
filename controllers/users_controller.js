@@ -1,29 +1,19 @@
 const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs")
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users_model.js");
 const Joi = require('joi'); 
 
 // USER SIGN-UP PAGE
-router.get("/new", (req, res) => {
-  res.render("users/new.ejs");
-});
 
-// THIS RUNS BEFORE USER IS CREATED
-// checks if user password is provided, 
-// new user does not already exist
-// compares password to hashed
-User.schema.pre("save", function () {
-  if (this.isModified("password")) {
-    this.password = bcrypt.hashSync(this.password, 10);
-  }
-});
-User.schema.statics.doesNotExist = async function (field) {
-  return (await this.where(field).countDocuments()) === 0;
-};
-User.schema.methods.comparePasswords = function (password) {
-  return compareSync(password, this.password);
-};
+
+//JOI validation
+const email = Joi.string().email().required().min(8).max(30)
+const username = Joi.string().min(5).max(30).required();
+const password = Joi.string().alphanum().min(5).max(30).required();
+
+
 
 
 // CREATE NEW USER
@@ -38,6 +28,39 @@ router.post("/", (req, res) => {
     res.redirect("/");
   });
 });
+// const userRouter = express.Router();
+// userRouter.post("", async (req, res) => {
+//   try {
+//     const { username, email, password } = req.body
+//     await Joi.validate({ username, email, password }, signUp);
+//     const newUser = new User({ username, email, password });
+//     await newUser.save();
+//     res.send({ userId: newUser.id, username });
+//   } catch (err) {
+//     res.status(400).send(err);
+//   }
+// });
+
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await  User.findOne({ username });
+  if (user === null) {
+    return res.send("no such user")
+  }
+  const result = await bcrypt.compare(password, username.password)
+  if (result) {
+    console.log("session", req.session)
+    //* req.session is an object
+    //* req.session.[key] = [value] 
+    req.session.loginUser = user;
+    console.log("new session", req.session)
+    res.send("ok")
+  } else {
+    res.send("no")
+  }
+  // res.send({name, password}); //! ok or not
+})
+
 
 router.get("/seed", async (req, res) => {
   await User.deleteMany({});
