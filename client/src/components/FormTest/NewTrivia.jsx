@@ -119,28 +119,28 @@ const NewTrivia = () => {
 
 
                 <form onSubmit={handleQuestion}>
-                    <label for="question">Question</label>
+                    <label htmlFor="question">Question</label>
                     <br />
                     <input type="text" name="question" className="border border-black-600" />
                     <br />
 
                     <input type="radio" name="answer" className="border border-black-600 form-radio" />
-                    <label for="answer">
+                    <label htmlFor="answer">
                         <input type="text" name="choice_1" className="border border-black-600" placeholder="Choice 1" />
                     </label>
                     <br />
                     <input type="radio" name="answer" className="border border-black-600 form-radio" />
-                    <label for="answer">
+                    <label htmlFor="answer">
                         <input type="text" name="choice_2" className="border border-black-600" placeholder="Choice 2" />
                     </label>
                     <br />
                     <input type="radio" name="answer" className="border border-black-600 form-radio" />
-                    <label for="answer">
+                    <label htmlFor="answer">
                         <input type="text" name="choice_3" className="border border-black-600" placeholder="Choice 3" />
                     </label>
                     <br />
                     <input type="radio" name="answer" className="border border-black-600 form-radio" />
-                    <label for="answer">
+                    <label htmlFor="answer">
                         <input type="text" name="choice_4" className="border border-black-600" placeholder="Choice 4" />
                     </label>
                     <br />
