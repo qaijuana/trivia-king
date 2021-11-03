@@ -16,6 +16,11 @@ const triviaSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  images: {
+    type: String,
+    required: false,
+    trim: true,
+  },
   tags: [
     {
       type: [String],
