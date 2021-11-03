@@ -11,7 +11,8 @@ const NewquizPage = () => {
   // };
   const [trivia, setTrivia] = useState([]);
   const [status, setStatus] = useState("pending");
-  const questionsNumber = 3;
+  const questionsNumber = 5;
+  const URL = "/api/trivia/";
 
   const generateQuestions = () => {
     const questions = [];
@@ -79,7 +80,7 @@ const NewquizPage = () => {
       tags: data.tags.value.split(", "),
       image: data.image.value,
       description: data.description.value,
-      trivia_question: allTriviaQuestions,
+      trivia_questions: allTriviaQuestions,
     };
 
     const dataNotFilledAlert = (area) =>
@@ -90,15 +91,18 @@ const NewquizPage = () => {
         return dataNotFilledAlert(property);
       }
     }
-    for (const question of newTrivia.trivia_question) {
-      if (!question.question || !question.correctAnswer) {
-        return dataNotFilledAlert(
-          `${question.question}${question.correctAnswer}`
-        );
+    for (let i = 0; i < newTrivia.trivia_questions.length; i++) {
+      if (!newTrivia.trivia_questions[i]) {
+        return dataNotFilledAlert(`Question ${i + 1}`);
+      } else if (
+        !newTrivia.trivia_questions[i].correctAnswer &&
+        newTrivia.trivia_questions[i].correctAnswer !== 0
+      ) {
+        return dataNotFilledAlert(`Question ${i + 1} answer`);
       }
-      for (const answer of question.choices) {
+      for (const answer of newTrivia.trivia_questions[i].choices) {
         if (!answer) {
-          return dataNotFilledAlert(answer);
+          return dataNotFilledAlert(`Question ${i + 1} choices`);
         }
       }
     }
@@ -115,7 +119,7 @@ const NewquizPage = () => {
           <div className="md:col-span-2 order-2 lg:order-1">
             {generateQuestions()}
           </div>
-          <div className="md:sticky md:top-20 md:col-span-1 md:h-screen order-1 lg:order-2">
+          <div className="lg:sticky lg:top-20 md:col-span-1 md:h-screen order-1 lg:order-2">
             {<TriviaInfoForm />}
           </div>
         </div>

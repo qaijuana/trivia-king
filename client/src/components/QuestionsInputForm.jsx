@@ -48,7 +48,7 @@ const QuestionsInputForm = (props) => {
             type="radio"
             name={"question" + props.index + "correctAnswerOptions"}
             className="text-red-600 border-red-600 focus:ring-red-600"
-            value="0"
+            value="1"
           />
           <input
             type="text"
@@ -63,7 +63,7 @@ const QuestionsInputForm = (props) => {
             type="radio"
             name={"question" + props.index + "correctAnswerOptions"}
             className="text-red-600 border-red-600 focus:ring-red-600"
-            value="0"
+            value="2"
           />
           <input
             type="text"
@@ -78,7 +78,7 @@ const QuestionsInputForm = (props) => {
             type="radio"
             name={"question" + props.index + "correctAnswerOptions"}
             className="text-red-600 border-red-600 focus:ring-red-600"
-            value="0"
+            value="3"
           />
           <input
             type="text"
