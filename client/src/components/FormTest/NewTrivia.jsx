@@ -22,7 +22,6 @@ const NewTrivia = () => {
     console.log("trivia", trivia);
 
     function createTrivia(e) {
-        console.log(e)
         fetch(URL, {
             method: "POST",
             body: JSON.stringify(e),
