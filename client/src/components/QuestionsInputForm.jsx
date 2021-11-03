@@ -1,52 +1,92 @@
+import { useRef } from "react";
 import SectionTitle from "../components/SectionTitle";
 
-const QuestionsInputForm = () => {
-  const TriviaQuestion = (props) => {
-    return (
-      <div className="pt-3">
-        <label htmlFor="" className="text-red-600">
-          {props.label}
-        </label>
-        <input
-          type="text"
-          className="text-sm rounded-lg border-2 border-solid border-red-600 w-full my-1"
-        />
-      </div>
-    );
-  };
-
-  const TriviaAnswer = () => {
-    return (
-      <div className="flex items-center">
-        <input
-          type="radio"
-          name="correctAnswerOptions"
-          className="text-red-600 border-red-600 focus:ring-red-600"
-        />
-        <input
-          type="text"
-          name="answerOptions"
-          className="ml-3 my-2 flex-grow text-sm rounded-lg border-2 border-solid border-red-600"
-        />
-      </div>
-    );
-  };
+const QuestionsInputForm = (props) => {
+  const inputRefQuestionName = useRef();
+  const inputRefChoice0 = useRef();
+  const inputRefChoice1 = useRef();
+  const inputRefChoice2 = useRef();
+  const inputRefChoice3 = useRef();
 
   return (
     <>
-      <div className="">
-        <SectionTitle title="Question 1" />
-        <form>
-          <TriviaQuestion label="Question" />
-          {/* Answers */}
-          <h3 className="text-red-600 mt-3">
-            Answers (select the correct answer)
-          </h3>
-          <TriviaAnswer />
-          <TriviaAnswer />
-          <TriviaAnswer />
-          <TriviaAnswer />
-        </form>
+      <div className="mb-5">
+        <SectionTitle title={"Question " + (props.index + 1)} />
+        <div className="pt-3">
+          <label htmlFor="" className="text-red-600">
+            Question
+          </label>
+          <input
+            type="text"
+            name={"question" + props.index}
+            className="text-sm rounded-lg border-2 border-solid border-red-600 w-full my-1"
+            ref={inputRefQuestionName}
+          />
+        </div>
+        {/* Answers */}
+        <h3 className="text-red-600 mt-3">
+          Answers (select the correct answer)
+        </h3>
+        {/* Ans 0 */}
+        <div className="flex items-center">
+          <input
+            type="radio"
+            name={"question" + props.index + "correctAnswerOptions"}
+            className="text-red-600 border-red-600 focus:ring-red-600"
+            value="0"
+          />
+          <input
+            type="text"
+            name={"question" + props.index + "choice0"}
+            className="ml-3 my-2 flex-grow text-sm rounded-lg border-2 border-solid border-red-600"
+            ref={inputRefChoice0}
+          />
+        </div>
+        {/* Ans 1 */}
+        <div className="flex items-center">
+          <input
+            type="radio"
+            name={"question" + props.index + "correctAnswerOptions"}
+            className="text-red-600 border-red-600 focus:ring-red-600"
+            value="0"
+          />
+          <input
+            type="text"
+            name={"question" + props.index + "choice1"}
+            className="ml-3 my-2 flex-grow text-sm rounded-lg border-2 border-solid border-red-600"
+            ref={inputRefChoice1}
+          />
+        </div>
+        {/* Ans 2 */}
+        <div className="flex items-center">
+          <input
+            type="radio"
+            name={"question" + props.index + "correctAnswerOptions"}
+            className="text-red-600 border-red-600 focus:ring-red-600"
+            value="0"
+          />
+          <input
+            type="text"
+            name={"question" + props.index + "choice2"}
+            className="ml-3 my-2 flex-grow text-sm rounded-lg border-2 border-solid border-red-600"
+            ref={inputRefChoice2}
+          />
+        </div>
+        {/* Ans 3 */}
+        <div className="flex items-center">
+          <input
+            type="radio"
+            name={"question" + props.index + "correctAnswerOptions"}
+            className="text-red-600 border-red-600 focus:ring-red-600"
+            value="0"
+          />
+          <input
+            type="text"
+            name={"question" + props.index + "choice3"}
+            className="ml-3 my-2 flex-grow text-sm rounded-lg border-2 border-solid border-red-600"
+            ref={inputRefChoice3}
+          />
+        </div>
       </div>
     </>
   );
