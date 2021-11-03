@@ -1,3 +1,5 @@
+import categoryList from "../categoryList";
+
 const TriviaInfoForm = () => {
   const TriviaInfoTextInput = (props) => {
     return (
@@ -7,8 +9,28 @@ const TriviaInfoForm = () => {
         </label>
         <input
           type="text"
+          name={props.name}
           className="text-sm rounded-lg border-2 border-solid border-red-600 w-full my-1"
         />
+      </div>
+    );
+  };
+
+  const TriviaCategoryInput = (props) => {
+    return (
+      <div>
+        <label htmlFor="categorySelect" className="text-red-600">
+          {props.label}
+        </label>
+        <select
+          name={props.name}
+          id="categorySelect"
+          className="text-sm text-red-600 rounded-lg border-2 border-solid border-red-600 w-full my-1"
+        >
+          {categoryList.map((category) => {
+            return <option value={category}>{category}</option>;
+          })}
+        </select>
       </div>
     );
   };
@@ -20,10 +42,11 @@ const TriviaInfoForm = () => {
           type="text"
           className="p-0 pb-1 mb-2 text-red-600 text-2xl border-0 border-b-4 border-red-600 placeholder-red-600 placeholder-opacity-30 focus:ring-0 focus:border-red-700"
           placeholder="Trivia Name"
+          name="title"
         />
-        <TriviaInfoTextInput label="Category" />
-        <TriviaInfoTextInput label="Tags" />
-        <TriviaInfoTextInput label="Image Link" />
+        <TriviaCategoryInput label="Category" name="category" />
+        <TriviaInfoTextInput label="Tags" name="tags" />
+        <TriviaInfoTextInput label="Image Link" name="image" />
         <div className="pt-0">
           <label htmlFor="newQuizDescription" className="text-red-600">
             Description

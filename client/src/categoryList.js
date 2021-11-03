@@ -10,7 +10,7 @@ const categoryList = [
   "History",
   "Literature",
   "Science and Math",
-  "Memes",
+  "Others",
 ];
 
 export default categoryList;
