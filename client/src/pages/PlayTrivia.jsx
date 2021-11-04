@@ -1,6 +1,9 @@
 import QuestionBox from "../components/QuestionBox";
+import { useHistory } from "react-router-dom";
 
-const PlayTrivia = () => {
+const PlayTrivia = (props) => {
+  let history = useHistory();
+
   //* fetch questions
 
   const trivia = {
@@ -61,9 +64,13 @@ const PlayTrivia = () => {
       } else {
         alert("Please fill in question " + (i + 1));
       }
+      if (answers.length === trivia.trivia_questions.length) {
+        props.submitAnswers(answers);
+        history.push(`./results`);
+      }
       // console.log("number " + i, data["question" + (i + 1)].value);
     }
-    console.log(answers);
+    // console.log(answers);
   };
 
   return (
@@ -74,6 +81,7 @@ const PlayTrivia = () => {
             {trivia.title}
           </h1>
           {showQuestions()}
+
           <button className="w-full text-white text-2xl rounded-lg bg-red-600 py-3 mb-32">
             Submit answers
           </button>
