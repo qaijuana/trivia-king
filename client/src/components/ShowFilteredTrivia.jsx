@@ -8,14 +8,20 @@ const ShowFilteredTrivia = (props) => {
         let categoryFilter = []
         props.trivia.map((i) => {
           if (i.category === item) {
-            categoryFilter.push(i)
+            return categoryFilter.push(i)
           }
         })
         return <TriviaCategorySection trivia={categoryFilter} category={item} />;
       });
     } else {
       return props.selectedCategories.map((item) => {
-        return <TriviaCategorySection trivia={props.trivia} category={item} />;
+        let categoryFilter = []
+        props.trivia.map((i) => {
+          if (i.category === item) {
+            return categoryFilter.push(i)
+          }
+        })
+        return <TriviaCategorySection trivia={categoryFilter} category={item} />;
       });
     }
   };
