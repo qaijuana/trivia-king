@@ -1,8 +1,58 @@
 import SectionTitle from "../components/SectionTitle";
-import * as Dialog from "@radix-ui/react-dialog";
-import { Cross1Icon } from "@radix-ui/react-icons";
+import TriviaCard from "../components/TriviaCard";
+import trivias from "../fakeData";
 
-const UserProfile = () => {
+const UserProfile = (props) => {
+  const UserInfoForm = () => {
+    const UserInfoTextInput = (props) => {
+      return (
+        <div className="pt-0">
+          <label htmlFor="" className="text-red-600">
+            {props.label}
+          </label>
+          <input
+            type="text"
+            name={props.name}
+            className="text-sm rounded-lg border-2 border-solid border-red-600 w-full my-1"
+          />
+        </div>
+      );
+    };
+
+    return (
+      <>
+        <div className="h-auto md:max-h-80vh md:overflow-y-scroll rounded-lg border-2 border-solid border-red-600 p-3">
+          <UserInfoTextInput label="Username" name="username" />
+          <UserInfoTextInput label="Password" name="password" />
+          <UserInfoTextInput label="Email" name="email" />
+
+          <button className="block w-full my-1 bg-red-600 text-white rounded-lg py-2 mt-3 hover:bg-red-700">
+            Change Details
+          </button>
+        </div>
+      </>
+    );
+  };
+
+  //   fetch user created trivias
+
+  const myTrivias = trivias;
+
+  const RenderMyTrivias = () => {
+    return myTrivias.map((trivia, index) => {
+      return (
+        <TriviaCard
+          id={index}
+          title={trivia.title}
+          image={trivia.image}
+          likes={trivia.likes}
+          category={trivia.category}
+          tags={trivia.tags}
+        />
+      );
+    });
+  };
+
   const username = "hello";
   return (
     <>
@@ -10,35 +60,24 @@ const UserProfile = () => {
         <div className="grid grid-cols-1 gap-1 justity-items-start">
           <div className="flex justify-between">
             <SectionTitle title={username} />
-            <Dialog.Root>
-              <Dialog.Trigger>
-                <button>Edit Profile</button>
-              </Dialog.Trigger>
-              <Dialog.Overlay>
-                <div>helo</div>
-              </Dialog.Overlay>
-              <Dialog.Content>
-                <Dialog.Close>
-                  <Cross1Icon />
-                </Dialog.Close>
-                <Dialog.Title>
-                  <p>Title</p>
-                </Dialog.Title>
-                <Dialog.Description>
-                  <p>
-                    We live in a time where there are so many holidays! Many
-                    times we forget to celebrate. So we'll build a holidays app
-                    to create, show and delete our holidays, we'll also be able
-                    to update whether or not we've celebrated the holiday
-                  </p>
-                </Dialog.Description>
-              </Dialog.Content>
-            </Dialog.Root>
           </div>
-          <div className="pb-3 pt-2">
-            <p className="text-red-600 text-lg">
-              Email: <span className="font-semibold">hwersdf@gmiasld.com</span>
-            </p>
+          <div className="pb-3 pt-2"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 pt-5">
+            <div className="md:col-span-2 order-2 lg:order-1">
+              <p className="text-red-600 text-lg">
+                Email:{" "}
+                <span className="font-semibold">hwersdf@gmiasld.com</span>
+              </p>
+              <div className="mt-10">
+                <SectionTitle title="My Trivia" />
+                <div className="sm:p-0 sm:border-0 grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3 p-3 rounded-lg border-2 border-red-600">
+                  <RenderMyTrivias />
+                </div>
+              </div>
+            </div>
+            <div className="lg:sticky lg:top-20 md:col-span-1 md:h-screen order-1 lg:order-2">
+              <UserInfoForm />
+            </div>
           </div>
         </div>
       </div>
