@@ -7,7 +7,6 @@ import SignupPage from "./pages/SignupPage";
 import NewquizPage from "./pages/NewquizPage";
 import ViewTrivia from "./pages/ViewTrivia";
 import PlayTrivia from "./pages/PlayTrivia";
-import { useState } from "react"
 import TriviaResultsPage from "./pages/TriviaResultsPage";
 
 
@@ -35,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar currentUser={currentUser} />
+      <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
       {/* <Test /> */}
 
       <div className="pt-14">
