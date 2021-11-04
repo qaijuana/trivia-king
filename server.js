@@ -58,6 +58,7 @@ const port = process.env.PORT || 3001;
 ///////////////////////////////////////////////
 
 //* Middleware
+app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 //? Middleware for controllers
@@ -81,14 +82,10 @@ app.use(
 );
 app.use("/api/sessions", sessionsController);
 app.use("/api/trivia", triviaController);
-app.use(express.static(path.join(__dirname, "./client/build")));
 
 
 //* Routes
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 
 app.get("/*", (req, res) => {
