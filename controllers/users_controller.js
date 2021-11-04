@@ -24,6 +24,18 @@ router.post("/new", (req, res) => {
   });
 });
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  res.json(user);
+});
+
+router.put("/:id",  async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findByIdAndUpdate(id, req.body);
+  res.json(user);
+})
+
 
 router.get("/seed", async (req, res) => {
   await User.deleteMany({});
