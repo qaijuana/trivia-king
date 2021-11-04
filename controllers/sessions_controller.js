@@ -51,26 +51,6 @@ sessions.delete("/", (req, res) => {
   });
 });
 
-// // LOGIN ROUTE
-// sessions.post("/login", async (req, res) => {
-//   const { username, password } = req.body;
-//   console.log("req body: POST", req.body);
-//   // basic validation
-//   if (!username || !password) {
-//     return res.status(400).json({ msg: "please enter all fields" });
-//   }
-//   // check if registered
-//   User.findOne({ username }, (err, user) => {
-//     if (!user) {
-//       return res.status(400).json({ msg: "user does not exist" });
-//     }
-//     //validate password
 
-//     if (await bcrypt.compare(password, user.password)) {
-//       req.session.loginUser = user;
-//     }
-//   });
-//   res.send("logged in")
-// });
 
 module.exports = sessions;

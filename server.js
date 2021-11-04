@@ -21,7 +21,12 @@ const cloud = process.env.ATLAS;
 const db = mongoose.connection;
 mongoose.connect(
   cloud,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+  },
   () => {
     console.log("mongo cloud connection established");
   }
@@ -81,6 +86,11 @@ app.use("/api/trivia", triviaController);
 //
 
 //* Routes
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
