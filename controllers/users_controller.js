@@ -17,7 +17,7 @@ const password = Joi.string().alphanum().min(5).max(30).required();
 
 
 // CREATE NEW USER
-router.post("/", (req, res) => {
+router.post("/new", (req, res) => {
   //overwrite the user password with the hashed password, then pass that in to our database
   req.body.password = bcrypt.hashSync(
     req.body.password,
