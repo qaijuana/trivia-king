@@ -9,7 +9,7 @@ import ViewTrivia from "./pages/ViewTrivia";
 import PlayTrivia from "./pages/PlayTrivia";
 import TriviaResultsPage from "./pages/TriviaResultsPage";
 import UserProfile from "./pages/UserProfile";
-
+import EditTriviaPage from "./pages/EditTriviaPage";
 
 //* Import Components
 // import Test from "./components/Test";
@@ -18,12 +18,11 @@ import Navbar from "./components/navbar/Navbar";
 // import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
-
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({});
   const getCurrentUser = (user) => {
-    setCurrentUser(user) 
-    console.log("propscurrent user" , user)
-  }
+    setCurrentUser(user);
+    console.log("propscurrent user", user);
+  };
 
   const [triviaAnswers, setTriviaAnswers] = useState([]);
 
@@ -31,7 +30,6 @@ function App() {
     setTriviaAnswers(answers);
     console.log(answers);
   };
-
 
   return (
     <div className="App">
@@ -65,7 +63,9 @@ function App() {
           <Route path="/trivia/:triviaId/results">
             <TriviaResultsPage answers={triviaAnswers} />
           </Route>
-          <Route path="/trivia/:triviaId/edit"></Route>
+          <Route path="/trivia/:triviaId/edit">
+            <EditTriviaPage />
+          </Route>
           {/* View Quiz Page */}
           <Route path="/trivia/:triviaId">
             <ViewTrivia />

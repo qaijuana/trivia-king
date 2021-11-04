@@ -1,43 +1,52 @@
 import { useEffect, useState } from "react";
-import TriviaInfoForm from "../components/TriviaInfoForm";
-import QuestionsInputForm from "../components/QuestionsInputForm";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import EditTriviaInfoForm from "../components/EditTriviaInfoForm";
+import EditQuestionsInputForm from "../components/EditQuestionsInputForm";
 
-const NewquizPage = () => {
-  // const [questions, setQuestions] = useState([]);
+const EditTriviaPage = () => {
+  const params = useParams();
+  const triviaId = params.triviaId;
+  let history = useHistory();
 
-  // const handleQuestions = (event) => {
-  //   event.target.value;
-  //   setQuestions([...questions, {}]);
-  // };
   const [trivia, setTrivia] = useState([]);
   const [status, setStatus] = useState("pending");
-  const questionsNumber = 5;
+  const questionsNumber = trivia?.trivia_questions?.length;
   const URL = "/api/trivia/";
 
-  const generateQuestions = () => {
-    const questions = [];
-    for (let i = 0; i < questionsNumber; i++) {
-      questions.push(<QuestionsInputForm index={i} key={i} />);
-    }
-    return questions;
+  const generateQuestions = (smt) => {
+    // const questions = [];
+    // for (let i = 0; i < questionsNumber; i++) {
+    //   questions.push(
+    //     <EditQuestionsInputForm
+    //       index={i}
+    //       key={i}
+    //       question={smt.trivia_questions?.[i]}
+    //     />
+    //   );
+    // }
+    return trivia?.trivia_questions?.map((item, i) => {
+      return <EditQuestionsInputForm index={i} key={i} question={item} />;
+    });
+    // return questions;
   };
 
   useEffect(() => {
     const fetchData = async () => {
       setStatus("Loading");
-      const res = await fetch(URL);
+      const res = await fetch(URL + triviaId);
       const data = await res.json();
-      setTrivia(data);
+      await setTrivia(data);
       setStatus("resolved");
     };
     fetchData();
-  }, []);
+  }, [triviaId]);
   // console.log("trivia", trivia);
 
-  function createTrivia(e) {
+  function editTrivia(e) {
     console.log(e);
-    fetch(URL, {
-      method: "POST",
+    fetch(URL + triviaId, {
+      method: "PUT",
       body: JSON.stringify(e),
       headers: {
         "Content-Type": "application/json",
@@ -48,6 +57,7 @@ const NewquizPage = () => {
         console.log("resJson", resJson);
       })
       .catch((error) => console.error({ Error: error }));
+    history.push("/");
   }
 
   const handleSubmit = (event) => {
@@ -107,8 +117,7 @@ const NewquizPage = () => {
       }
     }
 
-    createTrivia(newTrivia);
-
+    editTrivia(newTrivia);
     console.log(newTrivia);
   };
 
@@ -117,10 +126,10 @@ const NewquizPage = () => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 pt-5">
           <div className="md:col-span-2 order-2 lg:order-1">
-            {generateQuestions()}
+            {generateQuestions(trivia)}
           </div>
           <div className="lg:sticky lg:top-20 md:col-span-1 md:h-screen order-1 lg:order-2">
-            {<TriviaInfoForm />}
+            <EditTriviaInfoForm info={trivia} />
           </div>
         </div>
       </form>
@@ -128,4 +137,4 @@ const NewquizPage = () => {
   );
 };
 
-export default NewquizPage;
+export default EditTriviaPage;
