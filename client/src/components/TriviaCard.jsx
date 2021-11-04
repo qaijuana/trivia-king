@@ -13,10 +13,11 @@ const TriviaCard = (props) => {
     );
   };
 
+
   return (
     <>
       <div className={props.className}>
-        <Link to="/">
+        <Link to={"/trivia/" + props.id}>
           <div className="w-full h-40 bg-red-400 rounded-lg">
             <img
               src={props.image}

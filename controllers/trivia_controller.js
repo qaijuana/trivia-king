@@ -40,7 +40,6 @@ router.get("/seed", async (req, res) => {
       title: "The General K",
       description: "Everything and Anything",
       category: "General Knowledge",
-      images: "",
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
@@ -74,7 +73,6 @@ router.get("/seed", async (req, res) => {
       title: "The General K",
       description: "Everything and Anything",
       category: "General Knowledge",
-      images: "",
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
@@ -108,7 +106,6 @@ router.get("/seed", async (req, res) => {
       title: "The General K",
       description: "Everything and Anything",
       category: "General Knowledge",
-      images: "",
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
@@ -142,7 +139,6 @@ router.get("/seed", async (req, res) => {
       title: "The General K",
       description: "Everything and Anything",
       category: "General Knowledge",
-      images: "",
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
@@ -176,7 +172,6 @@ router.get("/seed", async (req, res) => {
       title: "The General K",
       description: "Everything and Anything",
       category: "General Knowledge",
-      images: "",
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
@@ -210,7 +205,6 @@ router.get("/seed", async (req, res) => {
       title: "Music, Music, Music",
       description: "Sounds Of Life",
       category: "Music",
-      images: "",
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
@@ -244,7 +238,6 @@ router.get("/seed", async (req, res) => {
       title: "Music, Music, Music",
       description: "Sounds Of Life",
       category: "Music",
-      images: "",
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
@@ -278,7 +271,6 @@ router.get("/seed", async (req, res) => {
       title: "Music, Music, Music",
       description: "Sounds Of Life",
       category: "Music",
-      images: "",
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
@@ -312,7 +304,6 @@ router.get("/seed", async (req, res) => {
       title: "Music, Music, Music",
       description: "Sounds Of Life",
       category: "Music",
-      images: "",
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
@@ -346,7 +337,6 @@ router.get("/seed", async (req, res) => {
       title: "Music, Music, Music",
       description: "Sounds Of Life",
       category: "Music",
-      images: "",
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
@@ -380,7 +370,6 @@ router.get("/seed", async (req, res) => {
       title: "Matheletes!",
       description: "Math problems that'll boggle your mind!",
       category: "Science and Math",
-      images: "",
       tags: ["Math", "Is", "Fun"],
       trivia_questions: [
         {
@@ -414,7 +403,6 @@ router.get("/seed", async (req, res) => {
       title: "Matheletes!",
       description: "Math problems that'll boggle your mind!",
       category: "Science and Math",
-      images: "",
       tags: ["Math", "Is", "Fun"],
       trivia_questions: [
         {
@@ -448,7 +436,6 @@ router.get("/seed", async (req, res) => {
       title: "Matheletes!",
       description: "Math problems that'll boggle your mind!",
       category: "Science and Math",
-      images: "",
       tags: ["Math", "Is", "Fun"],
       trivia_questions: [
         {
@@ -482,7 +469,6 @@ router.get("/seed", async (req, res) => {
       title: "Matheletes!",
       description: "Math problems that'll boggle your mind!",
       category: "Science and Math",
-      images: "",
       tags: ["Math", "Is", "Fun"],
       trivia_questions: [
         {
@@ -516,7 +502,6 @@ router.get("/seed", async (req, res) => {
       title: "Matheletes!",
       description: "Math problems that'll boggle your mind!",
       category: "Science and Math",
-      images: "",
       tags: ["Math", "Is", "Fun"],
       trivia_questions: [
         {
@@ -550,7 +535,6 @@ router.get("/seed", async (req, res) => {
       title: "Geo, dudes!",
       description: "Because Geography rocks!",
       category: "Geography",
-      images: "",
       tags: ["Geography", "Rivers", "Hydrological Cycle"],
       trivia_questions: [
         {
@@ -584,7 +568,6 @@ router.get("/seed", async (req, res) => {
       title: "Geo, dudes!",
       description: "Because Geography rocks!",
       category: "Geography",
-      images: "",
       tags: ["Geography", "Rivers", "Hydrological Cycle"],
       trivia_questions: [
         {
@@ -618,7 +601,6 @@ router.get("/seed", async (req, res) => {
       title: "Geo, dudes!",
       description: "Because Geography rocks!",
       category: "Geography",
-      images: "",
       tags: ["Geography", "Rivers", "Hydrological Cycle"],
       trivia_questions: [
         {
@@ -652,7 +634,6 @@ router.get("/seed", async (req, res) => {
       title: "Geo, dudes!",
       description: "Because Geography rocks!",
       category: "Geography",
-      images: "",
       tags: ["Geography", "Rivers", "Hydrological Cycle"],
       trivia_questions: [
         {
@@ -686,7 +667,6 @@ router.get("/seed", async (req, res) => {
       title: "Geo, dudes!",
       description: "Because Geography rocks!",
       category: "Geography",
-      images: "",
       tags: ["Geography", "Rivers", "Hydrological Cycle"],
       trivia_questions: [
         {
@@ -720,7 +700,6 @@ router.get("/seed", async (req, res) => {
       title: "Spot the Sports",
       description: "Who's your favourite team?",
       category: "Sports",
-      images: "",
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
@@ -754,7 +733,6 @@ router.get("/seed", async (req, res) => {
       title: "Spot the Sports",
       description: "Who's your favourite team?",
       category: "Sports",
-      images: "",
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
@@ -788,7 +766,6 @@ router.get("/seed", async (req, res) => {
       title: "Spot the Sports",
       description: "Who's your favourite team?",
       category: "Sports",
-      images: "",
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
@@ -822,7 +799,6 @@ router.get("/seed", async (req, res) => {
       title: "Spot the Sports",
       description: "Who's your favourite team?",
       category: "Sports",
-      images: "",
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
@@ -856,7 +832,6 @@ router.get("/seed", async (req, res) => {
       title: "Quit Playing Games with my Heart",
       description: "E-Sports is the new wave!",
       category: "Games",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -890,7 +865,6 @@ router.get("/seed", async (req, res) => {
       title: "Quit Playing Games with my Heart",
       description: "E-Sports is the new wave!",
       category: "Games",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -924,7 +898,6 @@ router.get("/seed", async (req, res) => {
       title: "Quit Playing Games with my Heart",
       description: "E-Sports is the new wave!",
       category: "Games",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -958,7 +931,6 @@ router.get("/seed", async (req, res) => {
       title: "Quit Playing Games with my Heart",
       description: "E-Sports is the new wave!",
       category: "Games",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -992,7 +964,6 @@ router.get("/seed", async (req, res) => {
       title: "Hers and His Story",
       description: "Dont you dare snooze this time!!",
       category: "History",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1026,7 +997,6 @@ router.get("/seed", async (req, res) => {
       title: "Hers and His Story",
       description: "Dont you dare snooze this time!!",
       category: "History",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1060,7 +1030,6 @@ router.get("/seed", async (req, res) => {
       title: "Hers and His Story",
       description: "Dont you dare snooze this time!!",
       category: "History",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1094,7 +1063,6 @@ router.get("/seed", async (req, res) => {
       title: "Hers and His Story",
       description: "Dont you dare snooze this time!!",
       category: "History",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1128,7 +1096,6 @@ router.get("/seed", async (req, res) => {
       title: "Literature",
       description: "Dont you dare snooze this time!!",
       category: "Literature",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1162,7 +1129,6 @@ router.get("/seed", async (req, res) => {
       title: "Literature",
       description: "Dont you dare snooze this time!!",
       category: "Literature",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1196,7 +1162,6 @@ router.get("/seed", async (req, res) => {
       title: "Literature",
       description: "Dont you dare snooze this time!!",
       category: "Literature",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1230,7 +1195,6 @@ router.get("/seed", async (req, res) => {
       title: "Literature",
       description: "Dont you dare snooze this time!!",
       category: "Literature",
-      images: "",
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
@@ -1264,7 +1228,6 @@ router.get("/seed", async (req, res) => {
       title: "Television",
       description: "E-Sports is the new wave!",
       category: "Television",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1298,7 +1261,6 @@ router.get("/seed", async (req, res) => {
       title: "Television",
       description: "E-Sports is the new wave!",
       category: "Television",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1332,7 +1294,6 @@ router.get("/seed", async (req, res) => {
       title: "Television",
       description: "E-Sports is the new wave!",
       category: "Television",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1366,7 +1327,6 @@ router.get("/seed", async (req, res) => {
       title: "Television",
       description: "E-Sports is the new wave!",
       category: "Television",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1400,7 +1360,6 @@ router.get("/seed", async (req, res) => {
       title: "Entertainment",
       description: "E-Sports is the new wave!",
       category: "Entertainment",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1434,7 +1393,6 @@ router.get("/seed", async (req, res) => {
       title: "Entertainment",
       description: "E-Sports is the new wave!",
       category: "Entertainment",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1468,7 +1426,6 @@ router.get("/seed", async (req, res) => {
       title: "Entertainment",
       description: "E-Sports is the new wave!",
       category: "Entertainment",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1502,7 +1459,6 @@ router.get("/seed", async (req, res) => {
       title: "Entertainment",
       description: "E-Sports is the new wave!",
       category: "Entertainment",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1536,7 +1492,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1570,7 +1525,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1604,7 +1558,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1638,7 +1591,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1672,7 +1624,6 @@ router.get("/seed", async (req, res) => {
       title: "Movies",
       description: "E-Sports is the new wave!",
       category: "Movies",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1706,7 +1657,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1740,7 +1690,6 @@ router.get("/seed", async (req, res) => {
       title: "Movies",
       description: "E-Sports is the new wave!",
       category: "Movies",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1774,7 +1723,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1808,7 +1756,6 @@ router.get("/seed", async (req, res) => {
       title: "Movies",
       description: "E-Sports is the new wave!",
       category: "Movies",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1842,7 +1789,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1876,7 +1822,6 @@ router.get("/seed", async (req, res) => {
       title: "Movies",
       description: "E-Sports is the new wave!",
       category: "Movies",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1910,7 +1855,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1944,7 +1888,6 @@ router.get("/seed", async (req, res) => {
       title: "Movies",
       description: "E-Sports is the new wave!",
       category: "Movies",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
@@ -1978,7 +1921,6 @@ router.get("/seed", async (req, res) => {
       title: "Others",
       description: "E-Sports is the new wave!",
       category: "Others",
-      images: "",
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {

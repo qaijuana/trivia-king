@@ -19,7 +19,6 @@ const Homepage = () => {
     }
     fetchData();
   }, [])
-  console.log("homepage", trivia)
 
   const handleChange = async (event) => {
     console.log(event.target.checked);
