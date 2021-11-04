@@ -198,7 +198,7 @@ const NewTrivia = () => {
                 })}
             </ul>
 
-  return (
+  {/* return (
     <div className="container">
       {
         ////////////////////////
@@ -341,7 +341,7 @@ const NewTrivia = () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };
