@@ -5,11 +5,19 @@ const TriviaCard = (props) => {
     return props.tags.map((tag) => " " + tag).toString();
   };
 
+  const Category = (props) => {
+    return (
+      <>
+        <p className="text-sm text-red-600">Category: {props.category}</p>
+      </>
+    );
+  };
+
   return (
     <>
       <div className={props.className}>
         <Link to="/">
-          <div className="w-full h-40 bg-red-400">
+          <div className="w-full h-40 bg-red-400 rounded-lg">
             <img
               src={props.image}
               alt="trivia name"
@@ -25,6 +33,7 @@ const TriviaCard = (props) => {
             </p>
           </div>
           <p className="text-sm text-red-600">Tags:{showTags()}</p>
+          {props.category ? <Category category={props.category} /> : null}
         </Link>
       </div>
     </>
