@@ -3,6 +3,11 @@ import TriviaCard from "../components/TriviaCard";
 import trivias from "../fakeData";
 
 const UserProfile = (props) => {
+  const user = props.user
+  const username = user.username;
+  const email = user.email
+  console.log(user, username, email)
+
   const UserInfoForm = () => {
     const UserInfoTextInput = (props) => {
       return (
@@ -53,7 +58,7 @@ const UserProfile = (props) => {
     });
   };
 
-  const username = "hello";
+  
   return (
     <>
       <div className="max-w-4xl lg:max-w-7xl mx-auto pt-4 px-4 sm:pt-6 lg:px-8">
@@ -66,7 +71,7 @@ const UserProfile = (props) => {
             <div className="md:col-span-2 order-2 lg:order-1">
               <p className="text-red-600 text-lg">
                 Email:{" "}
-                <span className="font-semibold">hwersdf@gmiasld.com</span>
+                <span className="font-semibold">{email}</span>
               </p>
               <div className="mt-10">
                 <SectionTitle title="My Trivia" />

@@ -73,7 +73,7 @@ function App() {
           <Route path="/user/:username/myQuizzes"></Route>
           {/* User Profile */}
           <Route path="/user/:username">
-            <UserProfile />
+            <UserProfile user={currentUser} />
           </Route>
           <Route>
             <Redirect to="/" />

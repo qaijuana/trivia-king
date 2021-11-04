@@ -18,8 +18,7 @@ const triviaSchema = new mongoose.Schema({
   },
   images: {
     type: String,
-    required: false,
-    default: "https://as1.ftcdn.net/v2/jpg/03/35/13/14/1000_F_335131435_DrHIQjlOKlu3GCXtpFkIG1v0cGgM9vJC.jpg",
+    default: "https://e7.pngegg.com/pngimages/577/649/png-clipart-question-mark-question-mark.png",
     trim: true,
   },
   tags: [
