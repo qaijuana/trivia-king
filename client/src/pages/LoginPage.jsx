@@ -15,6 +15,7 @@ const LoginPage = () => {
       username: e.target.username.value,
       password: e.target.password.value,
     }
+    console.log(login)
     const sendData = async () => {
       setStatus("Loading...")
       const res = await fetch("/api/sessions", {
@@ -25,7 +26,9 @@ const LoginPage = () => {
         },
       })
       const data = await res.json();
+      console.log(res)
       console.log(data)
+      setStatus("Resolved")
     }
     sendData();
   }
