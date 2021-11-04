@@ -42,7 +42,7 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 //* Config
 // const PASSWORD = anFbOQsQYv1M45Uw;
 const app = express();
-const port = process.env.PORT ?? 3001;
+const port = process.env.PORT || 3001;
 ///////////////////////////////////////////////
 // commenting out Qai's local database to connect Atlas
 ///////////////////////////////////////////////
@@ -59,7 +59,6 @@ const port = process.env.PORT ?? 3001;
 
 //* Middleware
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());
 //? Middleware for controllers
 app.use("/api/test", testController);
@@ -87,12 +86,16 @@ app.use("/api/trivia", triviaController);
 
 //* Routes
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
-});
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
+});
+
+
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
 
 //* Start Server to listen
