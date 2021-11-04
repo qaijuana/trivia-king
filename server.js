@@ -81,22 +81,17 @@ app.use(
 );
 app.use("/api/sessions", sessionsController);
 app.use("/api/trivia", triviaController);
-//
-//
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+});
 
 //* Routes
-
-
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-
-app.use(express.static(path.join(__dirname, "./client/build")));
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
-});
 
 //* Start Server to listen
 app.listen(port, () => {
