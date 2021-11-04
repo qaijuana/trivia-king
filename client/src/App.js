@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import NewquizPage from "./pages/NewquizPage";
+import ViewTrivia from "./pages/ViewTrivia";
 
 //* Import Components
 // import Test from "./components/Test";
@@ -26,9 +27,8 @@ function App() {
             <LoginPage />
           </Route>
 
-
           <Route path="/trivia/newTest">
-            <NewTrivia/>
+            <NewTrivia />
           </Route>
 
           <Route path="/signup">
@@ -39,14 +39,13 @@ function App() {
             <NewquizPage />
           </Route>
 
-
-
-
           <Route path="/trivia/:triviaId/play"></Route>
           <Route path="/trivia/:triviaId/results"></Route>
           <Route path="/trivia/:triviaId/edit"></Route>
           {/* View Quiz Page */}
-          <Route path="/trivia/:triviaId"></Route>
+          <Route path="/trivia/:triviaId">
+            <ViewTrivia />
+          </Route>
           <Route path="/user/:username/myQuizzes"></Route>
           {/* User Profile */}
           <Route path="/user/:username"></Route>
