@@ -112,6 +112,93 @@ const NewTrivia = () => {
     return (
 
 
+            {
+                ////////////////////////
+                //! FORMS FOR TRIVIA W/O QUESTIONS
+                ////////////////////////
+            }
+
+            <div class="form-container">
+                <form onSubmit={handleSubmit}>
+
+                    <input type="text" name="title" placeholder="title" className="border border-black-600" />
+                    <br />
+                    <input type="textarea" name="description" placeholder="description" className="border border-black-600" />
+                    <br />
+                    <input type="text" name="images" placeholder="images" className="border border-black-600" />
+                    <br />
+                    <input type="text" name="category" placeholder="category" className="border border-black-600" />
+                    <br />
+                    <input type="text" name="tags" placeholder="tag" className="border border-black-600" />
+                    <br />
+                    <button>Add</button>
+                </form>
+
+                {
+                ////////////////////////////
+                //! FORMS FOR QUESTIONS
+                /////////////////////////////
+                }
+
+
+                <form onSubmit={handleQuestion}>
+                    <label htmlFor="question">Question</label>
+                    <br />
+                    <input type="text" name="question" className="border border-black-600" />
+                    <br />
+
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
+                    <label htmlFor="answer">
+                        <input type="text" name="choice_1" className="border border-black-600" placeholder="Choice 1" />
+                    </label>
+                    <br />
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
+                    <label htmlFor="answer">
+                        <input type="text" name="choice_2" className="border border-black-600" placeholder="Choice 2" />
+                    </label>
+                    <br />
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
+                    <label htmlFor="answer">
+                        <input type="text" name="choice_3" className="border border-black-600" placeholder="Choice 3" />
+                    </label>
+                    <br />
+                    <input type="radio" name="answer" className="border border-black-600 form-radio" />
+                    <label htmlFor="answer">
+                        <input type="text" name="choice_4" className="border border-black-600" placeholder="Choice 4" />
+                    </label>
+                    <br />
+                    <input type="submit" value="Add Question" />
+
+                </form>
+            </div>
+
+
+            {
+                /////////////////////////
+                //! DISPLAY QUESTIONS ADDED
+                /////////////////////////
+            }
+            <ul>
+                {trivia_question.map((e, i) => {
+                    return (
+                        <li>
+                            <h1>{e.question}</h1>
+                            <img src={e.images} alt="" />
+                            <ul>
+                                {e.choices.map( (event) => {
+                                    return(
+                                        <li>{event}</li>
+                                    )
+                                })}
+                            </ul>
+
+                        </li>
+                    )
+                })}
+            </ul>
+
+  {/* return (
+
     <div className="container">
       {
         ////////////////////////
@@ -254,7 +341,7 @@ const NewTrivia = () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };

@@ -17,7 +17,7 @@ const LoginPage = () => {
     }
     const sendData = async () => {
       setStatus("Loading...")
-      const res = await fetch("/api/users/login", {
+      const res = await fetch("/api/sessions", {
         method: "POST",
         body: JSON.stringify(login),
         headers: {

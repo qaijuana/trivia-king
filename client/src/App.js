@@ -27,9 +27,9 @@ function App() {
           </Route>
 
 
-          <Route path="/trivia/newTest">
+          {/* <Route path="/trivia/newTest">
             <NewTrivia/>
-          </Route>
+          </Route> */}
 
           <Route path="/signup">
             <SignupPage />
