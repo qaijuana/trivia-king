@@ -1,9 +1,8 @@
 //* Dependencies
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const methodOverride = require("method-override");
 //? Controllers
 const testController = require("./controllers/testController");
 const userController = require("./controllers/users_controller.js");
@@ -54,7 +53,6 @@ const port = process.env.PORT ?? 3001;
 ///////////////////////////////////////////////
 
 //* Middleware
-app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(express.json());

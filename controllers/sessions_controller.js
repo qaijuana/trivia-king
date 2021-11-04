@@ -10,6 +10,7 @@ sessions.get("/new", (req, res) => {
 
 sessions.post("/", async (req, res) => {
   // Step 1 Look for the username
+  console.log(req.body)
   await User.findOne({ username: req.body.username }, (err, foundUser) => {
     // Database error
     console.log("founduser", foundUser)
