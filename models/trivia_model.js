@@ -50,7 +50,7 @@ const triviaSchema = new mongoose.Schema({
     },
   ], 
   likes: {type: Number, min:0},
-  author: {type: String, required: true},
+  author: {type: String, required: false},
 }, {timestamp: true});
 
 const Trivia = mongoose.model("Trivia", triviaSchema);
