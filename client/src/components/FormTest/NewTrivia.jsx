@@ -111,7 +111,6 @@ const NewTrivia = () => {
 
     return (
 
-        <div className="container">
 
             {
                 ////////////////////////
@@ -199,6 +198,7 @@ const NewTrivia = () => {
             </ul>
 
   {/* return (
+
     <div className="container">
       {
         ////////////////////////
