@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 import SectionTitle from "../components/SectionTitle";
 import * as Separator from "@radix-ui/react-separator";
 import UserDetailsInput from "../components/UserDetailsInput";
@@ -6,32 +6,36 @@ import UserDetailsButton from "../components/UserDetailsButton";
 import RedirectButton from "../components/RedirectButton";
 
 const LoginPage = () => {
-
   const [status, setStatus] = useState("pending");
+
+  const sendData = async (login) => {
+    setStatus("Loading...");
+    try {
+      const res = await fetch("/api/sessions", {
+        method: "POST",
+        body: JSON.stringify(login),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      // console.log(sessions)
+
+      console.log(status);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
     const login = {
       username: e.target.username.value,
       password: e.target.password.value,
-    }
-    const sendData = async () => {
-      setStatus("Loading...")
-      const res = await fetch("/api/sessions", {
-        method: "POST",
-        body: JSON.stringify(login),
-        headers: {
-          "Content-Type": "application/json"
-        },
-      })
-      const data = await res.json();
-      console.log(data)
-    }
-    sendData();
+    };
+    sendData(login);
   }
-  console.log(status)
-
-
 
   return (
     <>
@@ -41,7 +45,11 @@ const LoginPage = () => {
           <div className="mt-4">
             <form onSubmit={handleSubmit}>
               <UserDetailsInput name="username" label="User" type="text" />
-              <UserDetailsInput name="password" label="Password" type="password" />
+              <UserDetailsInput
+                name="password"
+                label="Password"
+                type="password"
+              />
               <UserDetailsButton text="Log in" />
             </form>
           </div>

@@ -27,8 +27,12 @@ sessions.post("/", async (req, res) => {
         // add the user to our session
        
         req.session.currentUser = foundUser;
+        res.send(foundUser)
+        console.log("founduser", foundUser)
+        console.log('session' , req.session)
+        console.log('session user' , req.session.currentUser)
         // redirect back to our home page
-        res.redirect("/");
+        // res.redirect("/");
       } else {
         // passwords do not match
         res.send('<a href="/"> password does not match </a>');
