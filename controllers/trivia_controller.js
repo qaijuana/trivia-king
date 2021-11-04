@@ -3,6 +3,7 @@ const Trivia = require("../models/trivia_model");
 const router = express.Router();
 const User = require("../models/users_model");
 
+
 router.get("/", async (req, res) => {
   const trivia = await Trivia.find({});
   res.json(trivia);
@@ -89,6 +90,10 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     res.json({ error });
   }
+});
+
+router.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
 
 
