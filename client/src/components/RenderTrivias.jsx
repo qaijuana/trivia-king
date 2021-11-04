@@ -3,14 +3,16 @@ import TriviaCard from "./TriviaCard";
 
 const RenderTrivias = (props) => {
   const trivias = props.trivia;
+  
 
   return trivias.map((trivia, index) => {
+
 
 
     if (props.showAmount === "all") {
       return (
         <TriviaCard
-          id=""
+          id={trivia._id}
           title={trivia.title}
           image={trivia.image}
           likes={trivia.likes}
@@ -20,7 +22,7 @@ const RenderTrivias = (props) => {
     } else if (index < props.showAmount) {
       return (
         <TriviaCard
-          id=""
+          id={trivia._id}
           title={trivia.title}
           image={trivia.image}
           likes={trivia.likes}
