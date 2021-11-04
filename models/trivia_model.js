@@ -43,14 +43,15 @@ const triviaSchema = new mongoose.Schema({
         },
       ],
       correctAnswer: {
-        type: String,
+        type: Number,
         required: true,
         trim: true,
       },
     },
   ], 
-  likes: {type: Number, min:0}
-});
+  likes: {type: Number, min:0},
+  author: {type: String, required: true},
+}, {timestamp: true});
 
 const Trivia = mongoose.model("Trivia", triviaSchema);
 module.exports = Trivia;
