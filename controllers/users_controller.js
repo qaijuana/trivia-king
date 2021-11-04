@@ -66,7 +66,7 @@ router.get("/seed", async (req, res) => {
   await User.deleteMany({});
   const herman = new User();
   herman.username = "herman111";
-  herman.password = await bcrypt.hash("herman111", 10);
+  herman.password =  bcrypt.hashSync("herman111", bcrypt.genSaltSync(10));
   herman.email = "herman@triviaking.com";
   herman.liked_trivia = [];
   herman.timestamp = Date.now;
@@ -74,7 +74,7 @@ router.get("/seed", async (req, res) => {
 
   const qai = new User();
   qai.username = "qai111";
-  qai.password = await bcrypt.hash("qai111", 10);
+  qai.password =  bcrypt.hashSync("qai111", bcrypt.genSaltSync(10));
   qai.email = "qai@triviaking.com";
   qai.liked_trivia = [];
   qai.timestamp = Date.now;
@@ -82,7 +82,7 @@ router.get("/seed", async (req, res) => {
 
   const tyler = new User();
   tyler.username = "tyler111";
-  tyler.password = await bcrypt.hash("tyler111", 10);
+  tyler.password =  bcrypt.hashSync("tyler111", bcrypt.genSaltSync(10));
   tyler.email = "tyler@triviaking.com";
   tyler.liked_trivia = [];
   tyler.timestamp = Date.now;
