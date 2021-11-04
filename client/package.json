@@ -1,6 +1,9 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "engine": {
+    "node": "17.0.1"
+  },
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.0",
