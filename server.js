@@ -9,7 +9,7 @@ const userController = require("./controllers/users_controller.js");
 const session = require("express-session");
 const sessionsController = require("./controllers/sessions_controller.js");
 const triviaController = require("./controllers/trivia_controller");
-const MongoStore = require("connect-mongo")
+const MongoStore = require("connect-mongo");
 
 //
 //
@@ -17,11 +17,16 @@ const MongoStore = require("connect-mongo")
 // CONNECT TO MONGO ATLAS
 ///////////////////////////////////////////////
 mongoose.Promise = global.Promise;
-const cloud = process.env.ATLAS;
+const MONGODB_URI = process.env.MONGODB_URI;
 const db = mongoose.connection;
 mongoose.connect(
-  cloud,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  MONGODB_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useFindAndModify: false,
+    // useCreateIndex: true
+  },
   () => {
     console.log("mongo cloud connection established");
   }
@@ -37,7 +42,7 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 //* Config
 // const PASSWORD = anFbOQsQYv1M45Uw;
 const app = express();
-const port = process.env.PORT ?? 3001;
+const port = process.env.PORT || 3001;
 ///////////////////////////////////////////////
 // commenting out Qai's local database to connect Atlas
 ///////////////////////////////////////////////
@@ -53,8 +58,8 @@ const port = process.env.PORT ?? 3001;
 ///////////////////////////////////////////////
 
 //* Middleware
-app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "./client/build")));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 //? Middleware for controllers
 app.use("/api/test", testController);
@@ -77,12 +82,11 @@ app.use(
 );
 app.use("/api/sessions", sessionsController);
 app.use("/api/trivia", triviaController);
-//
-//
 
 //* Routes
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
 
 //* Start Server to listen

@@ -1,5 +1,6 @@
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useState } from "react";
 import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
@@ -7,19 +8,30 @@ import NewquizPage from "./pages/NewquizPage";
 import ViewTrivia from "./pages/ViewTrivia";
 import PlayTrivia from "./pages/PlayTrivia";
 import { useState } from "react"
+import TriviaResultsPage from "./pages/TriviaResultsPage";
+
 
 //* Import Components
 // import Test from "./components/Test";
 import Navbar from "./components/navbar/Navbar";
-import NewTrivia from "./components/FormTest/NewTrivia";
+// import NewTrivia from "./components/FormTest/NewTrivia";
 // import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
+
   const [currentUser, setCurrentUser] = useState({})
   const getCurrentUser = (user) => {
     setCurrentUser(user) 
     console.log("propscurrent user" , user)
   }
+
+  const [triviaAnswers, setTriviaAnswers] = useState([]);
+
+  const submitAnswers = (answers) => {
+    setTriviaAnswers(answers);
+    console.log(answers);
+  };
+
 
   return (
     <div className="App">
@@ -48,9 +60,11 @@ function App() {
           </Route>
 
           <Route path="/trivia/:triviaId/play">
-            <PlayTrivia />
+            <PlayTrivia submitAnswers={submitAnswers} />
           </Route>
-          <Route path="/trivia/:triviaId/results"></Route>
+          <Route path="/trivia/:triviaId/results">
+            <TriviaResultsPage answers={triviaAnswers} />
+          </Route>
           <Route path="/trivia/:triviaId/edit"></Route>
           {/* View Quiz Page */}
           <Route path="/trivia/:triviaId">

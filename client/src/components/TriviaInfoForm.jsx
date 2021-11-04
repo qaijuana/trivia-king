@@ -28,7 +28,11 @@ const TriviaInfoForm = () => {
           className="text-sm text-red-600 rounded-lg border-2 border-solid border-red-600 w-full my-1"
         >
           {categoryList.map((category) => {
-            return <option value={category}>{category}</option>;
+            return (
+              <option value={category} key={category}>
+                {category}
+              </option>
+            );
           })}
         </select>
       </div>

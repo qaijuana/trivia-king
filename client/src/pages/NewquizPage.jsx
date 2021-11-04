@@ -17,7 +17,7 @@ const NewquizPage = () => {
   const generateQuestions = () => {
     const questions = [];
     for (let i = 0; i < questionsNumber; i++) {
-      questions.push(<QuestionsInputForm index={i} />);
+      questions.push(<QuestionsInputForm index={i} key={i} />);
     }
     return questions;
   };
@@ -32,7 +32,7 @@ const NewquizPage = () => {
     };
     fetchData();
   }, []);
-  console.log("trivia", trivia);
+  // console.log("trivia", trivia);
 
   function createTrivia(e) {
     console.log(e);

@@ -3,6 +3,7 @@ const Trivia = require("../models/trivia_model");
 const router = express.Router();
 const User = require("../models/users_model");
 
+
 router.get("/", async (req, res) => {
   const trivia = await Trivia.find({});
   res.json(trivia);
@@ -90,7 +91,5 @@ router.delete("/:id", async (req, res) => {
     res.json({ error });
   }
 });
-
-
 
 module.exports = router;

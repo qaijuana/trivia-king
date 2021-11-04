@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+
+
 router.get("/", (req, res) => {
   const dummyData = [
     { name: "datapoint 1", description: "first test" },
@@ -8,5 +10,6 @@ router.get("/", (req, res) => {
   ];
   res.json(dummyData);
 });
+
 
 module.exports = router;

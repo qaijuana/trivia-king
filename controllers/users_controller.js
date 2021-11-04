@@ -5,7 +5,6 @@ const router = express.Router();
 const User = require("../models/users_model.js");
 const Joi = require("joi");
 
-// USER SIGN-UP PAGE
 
 //JOI validation
 const email = Joi.string().email().required().min(8).max(30);
@@ -25,26 +24,6 @@ router.post("/new", (req, res) => {
   });
 });
 
-
-// router.post("/login", async (req, res) => {
-//   const { username, password } = req.body;
-//   const user = await  User.findOne({ username });
-//   if (user === null) {
-//     return res.send("no such user")
-//   }
-//   const result = await bcrypt.compare(password, username.password)
-//   if (result) {
-//     console.log("session", req.session)
-//     //* req.session is an object
-//     //* req.session.[key] = [value]
-//     req.session.loginUser = user;
-//     console.log("new session", req.session)
-//     res.send("ok")
-//   } else {
-//     res.send("no")
-//   }
-//   // res.send({name, password}); //! ok or not
-// })
 
 router.get("/seed", async (req, res) => {
   await User.deleteMany({});
@@ -74,7 +53,5 @@ router.get("/seed", async (req, res) => {
 
   res.send(herman, qai, tyler);
 });
-
-
 
 module.exports = router;
