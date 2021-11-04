@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcryptjs = require("bcryptjs") 
-const bcrypt = require("bcrypt")
+const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
-const userSchema = Schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -39,7 +39,7 @@ const userSchema = Schema(
 );
 
 // THIS RUNS BEFORE USER IS CREATED
-// checks if user password is provided, 
+// checks if user password is provided,
 // new user does not already exist
 // compares password to hashed
 // userSchema.pre("save", function () {
@@ -53,7 +53,6 @@ const userSchema = Schema(
 // userSchema.methods.comparePasswords = function (password) {
 //   return compareSync(password, this.password);
 // };
-
 
 const User = mongoose.model("User", userSchema);
 
