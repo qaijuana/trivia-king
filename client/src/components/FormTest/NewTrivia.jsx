@@ -109,6 +109,7 @@ const NewTrivia = () => {
   }
 
   return (
+
     <div className="container">
       {
         ////////////////////////

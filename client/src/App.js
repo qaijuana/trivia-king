@@ -28,9 +28,9 @@ function App() {
             <LoginPage />
           </Route>
 
-          <Route path="/trivia/newTest">
-            <NewTrivia />
-          </Route>
+          {/* <Route path="/trivia/newTest">
+            <NewTrivia/>
+          </Route> */}
 
           <Route path="/signup">
             <SignupPage />
