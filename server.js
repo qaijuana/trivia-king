@@ -9,7 +9,7 @@ const userController = require("./controllers/users_controller.js");
 const session = require("express-session");
 const sessionsController = require("./controllers/sessions_controller.js");
 const triviaController = require("./controllers/trivia_controller");
-const MongoStore = require("connect-mongo")
+const MongoStore = require("connect-mongo");
 
 //
 //
@@ -21,11 +21,11 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const db = mongoose.connection;
 mongoose.connect(
   MONGODB_URI,
-  { 
-    useNewUrlParser: true, 
+  {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
+    // useFindAndModify: false,
+    // useCreateIndex: true
   },
   () => {
     console.log("mongo cloud connection established");
@@ -83,10 +83,7 @@ app.use(
 app.use("/api/sessions", sessionsController);
 app.use("/api/trivia", triviaController);
 
-
 //* Routes
-
-
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build", "index.html"));
