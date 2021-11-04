@@ -1,63 +1,40 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const TriviaResultsPage = (props) => {
-  // fetch trivia
+  const params = useParams();
+  const triviaId = params.triviaId;
+  const [trivia, setTrivia] = useState([]);
+  const [status, setStatus] = useState("pending");
 
-  const [score, setScore] = useState();
-
-  const trivia = {
-    title: "Marvek ",
-    image:
-      "https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-    likes: 5,
-    tags: ["funny", "difficult", "dsfs"],
-    trivia_questions: [
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 2,
-      },
-      {
-        question: "Questio n 222 teo?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 1,
-      },
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 0,
-      },
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 3,
-      },
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 2,
-      },
-    ],
-  };
+  const URL = "/api/trivia/";
 
   useEffect(() => {
-    const compareAnswers = () => {
-      let triviaScore = 0;
-      const answers = props.answers;
-      for (let i = 0; i < answers.length; i++) {
-        if (
-          parseInt(answers[i]) ===
-          parseInt(trivia.trivia_questions[i].correctAnswer)
-        ) {
-          triviaScore++;
-        }
-        setScore(triviaScore);
-      }
+    const fetchData = async () => {
+      setStatus("Loading");
+      const res = await fetch(URL + triviaId);
+      const data = await res.json();
+      setTrivia(data);
+      setStatus("resolved");
     };
-    compareAnswers();
-    console.log("your score", score);
-  });
+    fetchData();
+  }, [triviaId]);
+
+  // const [score, setScore] = useState();
+
+  const compareAnswers = () => {
+    let triviaScore = 0;
+    const answers = props.answers;
+    for (let i = 0; i < answers.length; i++) {
+      if (
+        parseInt(answers[i]) ===
+        parseInt(trivia?.trivia_questions?.[i]?.correctAnswer)
+      ) {
+        triviaScore++;
+      }
+    }
+    return triviaScore;
+  };
 
   return (
     <div className="max-w-4xl lg:max-w-7xl mx-auto pt-4 px-4 sm:pt-6 lg:px-8">
@@ -68,7 +45,7 @@ const TriviaResultsPage = (props) => {
         <div className="flex justify-center items-center gap-4">
           <h3 className="text-red-600 text-5xl">your score:</h3>
           <h2 className="text-red-600 text-9xl font-semibold">
-            {score}/{props.answers.length}
+            {compareAnswers()}/{props.answers.length}
           </h2>
         </div>
         <Link to="/" className="w-full grid justify-items-stretch items-center">

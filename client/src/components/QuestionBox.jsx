@@ -35,7 +35,7 @@ const QuestionBox = (props) => {
               value={props.id}
             />
             <div className="label-checked:bg-red-600 label-checked:text-white border-2 rounded-lg border-red-600 text-center text-red-600 text-2xl py-4 my-2 md:m-2 cursor-pointer">
-              {props.id}
+              {props.info}
             </div>
           </label>
         </>
