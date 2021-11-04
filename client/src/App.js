@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import NewquizPage from "./pages/NewquizPage";
 import ViewTrivia from "./pages/ViewTrivia";
+import PlayTrivia from "./pages/PlayTrivia";
 
 //* Import Components
 // import Test from "./components/Test";
@@ -39,7 +40,9 @@ function App() {
             <NewquizPage />
           </Route>
 
-          <Route path="/trivia/:triviaId/play"></Route>
+          <Route path="/trivia/:triviaId/play">
+            <PlayTrivia />
+          </Route>
           <Route path="/trivia/:triviaId/results"></Route>
           <Route path="/trivia/:triviaId/edit"></Route>
           {/* View Quiz Page */}
