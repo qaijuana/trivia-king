@@ -1,4 +1,6 @@
 import SectionTitle from "../components/SectionTitle";
+import * as Dialog from "@radix-ui/react-dialog";
+import { Cross1Icon } from "@radix-ui/react-icons";
 
 const UserProfile = () => {
   const username = "hello";
@@ -8,9 +10,30 @@ const UserProfile = () => {
         <div className="grid grid-cols-1 gap-1 justity-items-start">
           <div className="flex justify-between">
             <SectionTitle title={username} />
-            <button className="py-2 px-4 rounded-lg bg-red-600 text-white text-xl hover:bg-red-700">
-              Edit Profile
-            </button>
+            <Dialog.Root>
+              <Dialog.Trigger>
+                <button>Edit Profile</button>
+              </Dialog.Trigger>
+              <Dialog.Overlay>
+                <div>helo</div>
+              </Dialog.Overlay>
+              <Dialog.Content>
+                <Dialog.Close>
+                  <Cross1Icon />
+                </Dialog.Close>
+                <Dialog.Title>
+                  <p>Title</p>
+                </Dialog.Title>
+                <Dialog.Description>
+                  <p>
+                    We live in a time where there are so many holidays! Many
+                    times we forget to celebrate. So we'll build a holidays app
+                    to create, show and delete our holidays, we'll also be able
+                    to update whether or not we've celebrated the holiday
+                  </p>
+                </Dialog.Description>
+              </Dialog.Content>
+            </Dialog.Root>
           </div>
           <div className="pb-3 pt-2">
             <p className="text-red-600 text-lg">
