@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs")
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users_model.js");
-const Joi = require('joi'); 
+const Joi = require('joi');
 
 // USER SIGN-UP PAGE
 
@@ -92,16 +92,17 @@ router.get("/seed", async (req, res) => {
 });
 
 // LOGIN ROUTE
-router.post("/login", async (req,res) => {
-  const {username, password} = req.body
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body
+  console.log("req body: POST", req.body)
   // basic validation
-  if(!username || !password) { return res.status(400).json({msg:"please enter all fields"})}
+  if (!username || !password) { return res.status(400).json({ msg: "please enter all fields" }) }
   // check if registered
-  const user = await User.findOne({username})
-  if (!user) {return res.status(400).json({msg: "user does not exist"})}
+  const user = await User.findOne({ username })
+  if (!user) { return res.status(400).json({ msg: "user does not exist" }) }
   //validate password
   const result = await bcrypt.compare(password, user.password)
-  if (result) {req.session.loginUser = user}
+  if (result) { req.session.loginUser = user }
 })
 
 

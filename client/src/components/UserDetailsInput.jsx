@@ -6,6 +6,7 @@ const UserDetailsInput = (props) => {
         <input
           type={props.type}
           className="border-2 border-red-600 rounded-lg w-full h-8"
+          name={props.name}
         />
       </div>
     </>
