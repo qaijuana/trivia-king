@@ -11,30 +11,56 @@ router.get("/", async (req, res) => {
 
 router.get("/seed", async (req, res) => {
 
-  const trivia = await Trivia.create({
-    title: "Colors",
-    description: "Colors of the world",
-    category: "General Knowledge",
+  const trivia = await Trivia.create(
+    {
+      title: "Colors",
+      description: "Colors of the world",
+      category: "General Knowledge",
       images: "https://www.readersdigest.ca/wp-content/uploads/2020/03/color-quiz.jpg",
-    tags: ["colors", "general knowledge", "rainbow"],
-    trivia_questions: [
-      {
-        question: "What colors is the green grass?",
-        choices: ["red", "blue", "green", "yellow"],
-        correctAnswer: 2,
-      },
-      {
-        question: "what color is the yellow ball?",
-        choices: ["blue", "yellow", "red", "green"],
-        correctAnswer: 1,
-      },
-      {
-        question: "What color is the blue sky?",
-        choices: ["yellow", "green", "red", "blue"],
-        correctAnswer: 3,
-      },
-    ],
-  });
+      tags: ["colors", "general knowledge", "rainbow"],
+      trivia_questions: [
+        {
+          question: "What colors is the green grass?",
+          choices: ["red", "blue", "green", "yellow"],
+          correctAnswer: 2,
+        },
+        {
+          question: "what color is the yellow ball?",
+          choices: ["blue", "yellow", "red", "green"],
+          correctAnswer: 1,
+        },
+        {
+          question: "What color is the blue sky?",
+          choices: ["yellow", "green", "red", "blue"],
+          correctAnswer: 3,
+        },
+      ],
+    },
+    {
+      title: "Colors",
+      description: "Colors of the world",
+      category: "General Knowledge",
+      images: "https://www.readersdigest.ca/wp-content/uploads/2020/03/color-quiz.jpg",
+      tags: ["colors", "general knowledge", "rainbow"],
+      trivia_questions: [
+        {
+          question: "What colors is the green grass?",
+          choices: ["red", "blue", "green", "yellow"],
+          correctAnswer: 2,
+        },
+        {
+          question: "what color is the yellow ball?",
+          choices: ["blue", "yellow", "red", "green"],
+          correctAnswer: 1,
+        },
+        {
+          question: "What color is the blue sky?",
+          choices: ["yellow", "green", "red", "blue"],
+          correctAnswer: 3,
+        },
+      ],
+    },
+  );
   res.redirect("/api/trivia");
 });
 
@@ -49,22 +75,22 @@ router.get("/new", (req, res) => {
 });
 
 router.get("/:id/like", async (req, res) => {
-      await User.findByIdAndUpdate("617f8755039827ace01e9b4e", {
-        $push: { liked_trivia: req.params },
-      });
-      await Trivia.findByIdAndUpdate(req.params.id, {$inc: {likes: 1}})
-    //   await Trivia.findByIdAndUpdate(req.params.id, {likes: 1})
-      res.send("like")
-    });
-    
-    router.get("/:id/unlike", async (req, res) => {
-        await User.findByIdAndUpdate("617f8755039827ace01e9b4e", {
-          $pull: { liked_trivia: req.params },
-        });
-        await Trivia.findByIdAndUpdate(req.params.id, {$inc: {likes: -1}})
-      //   await Trivia.findByIdAndUpdate(req.params.id, {likes: 1})
-        res.send("unlike")
-      });
+  await User.findByIdAndUpdate("617f8755039827ace01e9b4e", {
+    $push: { liked_trivia: req.params },
+  });
+  await Trivia.findByIdAndUpdate(req.params.id, { $inc: { likes: 1 } })
+  //   await Trivia.findByIdAndUpdate(req.params.id, {likes: 1})
+  res.send("like")
+});
+
+router.get("/:id/unlike", async (req, res) => {
+  await User.findByIdAndUpdate("617f8755039827ace01e9b4e", {
+    $pull: { liked_trivia: req.params },
+  });
+  await Trivia.findByIdAndUpdate(req.params.id, { $inc: { likes: -1 } })
+  //   await Trivia.findByIdAndUpdate(req.params.id, {likes: 1})
+  res.send("unlike")
+});
 
 
 router.get("/:id", async (req, res) => {
