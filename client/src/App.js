@@ -1,5 +1,6 @@
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useState } from "react";
 import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
@@ -10,10 +11,12 @@ import PlayTrivia from "./pages/PlayTrivia";
 //* Import Components
 // import Test from "./components/Test";
 import Navbar from "./components/navbar/Navbar";
-import NewTrivia from "./components/FormTest/NewTrivia";
+// import NewTrivia from "./components/FormTest/NewTrivia";
 // import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
+  const [triviaAnswers, setTriviaAnswers] = useState([]);
+
   return (
     <div className="App">
       <Navbar />

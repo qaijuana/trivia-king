@@ -1,3 +1,5 @@
+import QuestionBox from "../components/QuestionBox";
+
 const PlayTrivia = () => {
   //* fetch questions
 
@@ -46,15 +48,33 @@ const PlayTrivia = () => {
     return questions;
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = event.target;
+    const answers = [];
+    for (let i = 0; i < trivia.trivia_questions.length; i++) {
+      if (
+        data["question" + (i + 1)].value ||
+        data["question" + (i + 1)].value === 0
+      ) {
+        answers.push(data["question" + (i + 1)].value);
+      } else {
+        alert("Please fill in question " + (i + 1));
+      }
+      // console.log("number " + i, data["question" + (i + 1)].value);
+    }
+    console.log(answers);
+  };
+
   return (
     <>
       <div className="max-w-4xl lg:max-w-7xl mx-auto pt-4 px-4 sm:pt-6 lg:px-8">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <h1 className="text-5xl text-red-600 font-semibold my-2 mb-8">
             {trivia.title}
           </h1>
           {showQuestions()}
-          <button className="w-full text-white text-3xl rounded-lg bg-red-600 py-3 mb-32">
+          <button className="w-full text-white text-2xl rounded-lg bg-red-600 py-3 mb-32">
             Submit answers
           </button>
         </form>
