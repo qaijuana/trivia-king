@@ -7,7 +7,6 @@ import SignupPage from "./pages/SignupPage";
 import NewquizPage from "./pages/NewquizPage";
 import ViewTrivia from "./pages/ViewTrivia";
 import PlayTrivia from "./pages/PlayTrivia";
-import { useState } from "react"
 import TriviaResultsPage from "./pages/TriviaResultsPage";
 
 
