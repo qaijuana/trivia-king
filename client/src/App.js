@@ -8,6 +8,7 @@ import NewquizPage from "./pages/NewquizPage";
 import ViewTrivia from "./pages/ViewTrivia";
 import PlayTrivia from "./pages/PlayTrivia";
 import TriviaResultsPage from "./pages/TriviaResultsPage";
+import UserProfile from "./pages/UserProfile";
 
 //* Import Components
 // import Test from "./components/Test";
@@ -62,7 +63,9 @@ function App() {
           </Route>
           <Route path="/user/:username/myQuizzes"></Route>
           {/* User Profile */}
-          <Route path="/user/:username"></Route>
+          <Route path="/user/:username">
+            <UserProfile />
+          </Route>
           <Route>
             <Redirect to="/" />
           </Route>
