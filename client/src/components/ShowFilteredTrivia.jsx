@@ -5,11 +5,23 @@ const ShowFilteredTrivia = (props) => {
   const showSelected = () => {
     if (props.selectedCategories.length === 0) {
       return categoryList.map((item) => {
-        return <TriviaCategorySection category={item} />;
+        let categoryFilter = []
+        props.trivia.map((i) => {
+          if (i.category === item) {
+            return categoryFilter.push(i)
+          }
+        })
+        return <TriviaCategorySection trivia={categoryFilter} category={item} />;
       });
     } else {
       return props.selectedCategories.map((item) => {
-        return <TriviaCategorySection category={item} />;
+        let categoryFilter = []
+        props.trivia.map((i) => {
+          if (i.category === item) {
+            return categoryFilter.push(i)
+          }
+        })
+        return <TriviaCategorySection trivia={categoryFilter} category={item} />;
       });
     }
   };

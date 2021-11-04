@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionTitle from "../components/SectionTitle";
 import Jumbotron from "../components/Jumbotron";
 import TriviaFilter from "../components/TriviaFilter";
@@ -6,6 +6,20 @@ import ShowFilteredTrivia from "../components/ShowFilteredTrivia";
 
 const Homepage = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [trivia, setTrivia] = useState([]);
+  const [status, setStatus] = useState("pending");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setStatus("Loading");
+      const res = await fetch("/api/trivia");
+      const data = await res.json();
+      setTrivia(data);
+      setStatus("resolved");
+    }
+    fetchData();
+  }, [])
+  console.log("homepage", trivia)
 
   const handleChange = async (event) => {
     console.log(event.target.checked);
@@ -30,7 +44,7 @@ const Homepage = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 pt-5">
           <TriviaFilter handleChange={handleChange} />
-          <ShowFilteredTrivia selectedCategories={selectedCategories} />
+          <ShowFilteredTrivia trivia={trivia} selectedCategories={selectedCategories} />
         </div>
       </div>
     </>

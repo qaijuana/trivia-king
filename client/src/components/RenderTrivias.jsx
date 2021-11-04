@@ -1,8 +1,12 @@
 import TriviaCard from "./TriviaCard";
-import trivias from "../fakeData.js";
+// import trivias from "../fakeData.js";
 
 const RenderTrivias = (props) => {
+  const trivias = props.trivia;
+
   return trivias.map((trivia, index) => {
+
+
     if (props.showAmount === "all") {
       return (
         <TriviaCard

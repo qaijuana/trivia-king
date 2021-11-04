@@ -33,7 +33,7 @@ const TriviaCategorySection = (props) => {
             " grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3 h-auto max-h-96 p-3 overflow-y-auto rounded-lg border-2 border-red-600 transition-all duration-500"
           }
         >
-          <RenderTrivias showAmount={showAmount} />
+          <RenderTrivias trivia={props.trivia} showAmount={showAmount} />
         </div>
       </div>
     </>
