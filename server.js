@@ -17,10 +17,10 @@ const MongoStore = require("connect-mongo")
 // CONNECT TO MONGO ATLAS
 ///////////////////////////////////////////////
 mongoose.Promise = global.Promise;
-const cloud = process.env.ATLAS;
+const MONGODB_URI = process.env.MONGODB_URI;
 const db = mongoose.connection;
 mongoose.connect(
-  cloud,
+  MONGODB_URI,
   { 
     useNewUrlParser: true, 
     useUnifiedTopology: true,
