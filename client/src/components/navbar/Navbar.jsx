@@ -24,9 +24,6 @@ const Navbar = (props) => {
     }
   };
 
-
-
-  
   const handleLogout = async () => {
     // setCurrentUser(null)
     fetch("/api/sessions/destroy-route")
@@ -34,7 +31,7 @@ const Navbar = (props) => {
       .then((data) => console.log("data", data))
       .catch((error) => console.log("error", error));
     history.push("/");
-    props.setCurrentUser("")
+    props.setCurrentUser("");
     console.log("logout currentUser", props.currentUser);
   };
 
@@ -80,7 +77,7 @@ const Navbar = (props) => {
               </div>
               <div className="hidden md:flex items-center py-3 space-x-3 text-sm">
                 {/* Change username to current username */}
-                <NavLink
+                {/* <NavLink
                   to="/user/:username/myQuizzes"
                   className={
                     props.currentUser.username
@@ -89,7 +86,7 @@ const Navbar = (props) => {
                   }
                 >
                   My Quizzes
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                   to="/trivia/new"
                   className={
@@ -109,7 +106,11 @@ const Navbar = (props) => {
                 className="flex items-center text-white hover:text-red-700"
               >
                 <span>{props.currentUser.username}</span>
-                <span>
+                <span
+                  className={
+                    props.currentUser.username == null ? "hidden" : null
+                  }
+                >
                   <PersonIcon className="w-5 h-5 ml-1" />
                 </span>
               </NavLink>
@@ -161,17 +162,24 @@ const Navbar = (props) => {
 
         {/* Change username to current username */}
         <div className={navMenu + " md:hidden pb-3"}>
-          <NavLink to="/user/:username" className="block py-2 px-4 text-white">
+          <NavLink
+            to="/user/:username"
+            className={
+              props.currentUser.username
+                ? "block py-2 px-4 text-white"
+                : "hidden"
+            }
+          >
             Profile
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/user/:username/myQuizzes"
             className={
               props.currentUser ? "block py-2 px-4 text-white" : "hidden"
             }
           >
             My Quizzes
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/trivia/new"
             className={
@@ -182,10 +190,24 @@ const Navbar = (props) => {
           >
             New Quiz
           </NavLink>
-          <NavLink to="/login" className="block py-2 px-4 text-white">
+          <NavLink
+            to="/login"
+            className={
+              props.currentUser.username
+                ? "hidden"
+                : "block py-2 px-4 text-white"
+            }
+          >
             Log In
           </NavLink>
-          <NavLink to="/signup" className="block py-2 px-4 text-white">
+          <NavLink
+            to="/signup"
+            className={
+              props.currentUser.username
+                ? "hidden"
+                : "block py-2 px-4 text-white"
+            }
+          >
             Sign Up
           </NavLink>
         </div>
