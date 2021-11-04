@@ -9,17 +9,13 @@ import {
 import { connect } from "react-redux";
 import axios from "axios";
 
-
 // import { Bars } from "./NavbarElements";
 
-
-
-
-const Navbar = (props ) => {
+const Navbar = (props) => {
   const [navMenu, setNavMenu] = useState("hidden");
-  
+
   const history = useHistory();
- console.log("navbar currentUser", props.currentUser)
+  console.log("navbar currentUser", props.currentUser);
   const toggleNav = () => {
     if (navMenu === "hidden") {
       return setNavMenu(null);
@@ -27,20 +23,31 @@ const Navbar = (props ) => {
       return setNavMenu("hidden");
     }
   };
- 
 
 
+
+  
   const handleLogout = async () => {
     // setCurrentUser(null)
-    await axios.delete("/api/sessions");
+    fetch("/api/sessions/destroy-route")
+      .then((response) => response.json)
+      .then((data) => console.log("data", data))
+      .catch((error) => console.log("error", error));
     history.push("/");
+    props.setCurrentUser("")
+    console.log("logout currentUser", props.currentUser);
   };
+
+  // const handleLogout = async (event) => {
+  //   await axios.delete("/api/sessions");
+  //   history.push("/");
+  // };
 
   // const authButton = () => {
   //   if (currentUser === null) {
   //     return (
   //       <>
-          
+
   //       </>
   //     );
   //   } else {
@@ -75,13 +82,21 @@ const Navbar = (props ) => {
                 {/* Change username to current username */}
                 <NavLink
                   to="/user/:username/myQuizzes"
-                  className={props.currentUser.username ? "text-white hover:text-red-700" : 'hidden'}
+                  className={
+                    props.currentUser.username
+                      ? "text-white hover:text-red-700"
+                      : "hidden"
+                  }
                 >
                   My Quizzes
                 </NavLink>
                 <NavLink
                   to="/trivia/new"
-                  className={props.currentUser.username ? "text-white hover:text-red-700" : "hidden" }
+                  className={
+                    props.currentUser.username
+                      ? "text-white hover:text-red-700"
+                      : "hidden"
+                  }
                 >
                   New Quiz
                 </NavLink>
@@ -100,20 +115,39 @@ const Navbar = (props ) => {
               </NavLink>
 
               <NavLink to="/login" className="text-white">
-            <button className={props.currentUser.username == null ? "rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700" : "hidden"} >
-              Log In
-            </button>
-          </NavLink>
-          <NavLink to="/signup" className="text-white">
-            <button className={props.currentUser.username == null ?"rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700" : "hidden"}>
-              Sign Up
-            </button>
-          </NavLink>
-          <NavLink to="/" className="text-white">
-            <button onClick={handleLogout} className={props.currentUser.username ? "rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700" : "hidden"}>
-              Log Out
-            </button>
-          </NavLink>
+                <button
+                  className={
+                    props.currentUser.username == null
+                      ? "rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700"
+                      : "hidden"
+                  }
+                >
+                  Log In
+                </button>
+              </NavLink>
+              <NavLink to="/signup" className="text-white">
+                <button
+                  className={
+                    props.currentUser.username == null
+                      ? "rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700"
+                      : "hidden"
+                  }
+                >
+                  Sign Up
+                </button>
+              </NavLink>
+              <NavLink to="/" className="text-white">
+                <button
+                  onClick={handleLogout}
+                  className={
+                    props.currentUser.username
+                      ? "rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700"
+                      : "hidden"
+                  }
+                >
+                  Log Out
+                </button>
+              </NavLink>
             </div>
             {/* mobile button */}
             <div className="md:hidden flex items-center text-white">
@@ -132,11 +166,20 @@ const Navbar = (props ) => {
           </NavLink>
           <NavLink
             to="/user/:username/myQuizzes"
-            className={props.currentUser ? "block py-2 px-4 text-white" : "hidden"}
+            className={
+              props.currentUser ? "block py-2 px-4 text-white" : "hidden"
+            }
           >
             My Quizzes
           </NavLink>
-          <NavLink to="/trivia/new" className={props.currentUser.username ? "block py-2 px-4 text-white" : "hidden"}>
+          <NavLink
+            to="/trivia/new"
+            className={
+              props.currentUser.username
+                ? "block py-2 px-4 text-white"
+                : "hidden"
+            }
+          >
             New Quiz
           </NavLink>
           <NavLink to="/login" className="block py-2 px-4 text-white">

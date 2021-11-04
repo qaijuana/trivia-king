@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar currentUser={currentUser} />
+      <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
       {/* <Test /> */}
 
       <div className="pt-14">
