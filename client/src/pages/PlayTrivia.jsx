@@ -1,49 +1,31 @@
+import { useEffect, useState } from "react";
 import QuestionBox from "../components/QuestionBox";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const PlayTrivia = (props) => {
   let history = useHistory();
 
-  //* fetch questions
+  const params = useParams();
+  const triviaId = params.triviaId;
+  const [trivia, setTrivia] = useState([]);
+  const [status, setStatus] = useState("pending");
 
-  const trivia = {
-    title: "Marvek ",
-    image:
-      "https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-    likes: 5,
-    tags: ["funny", "difficult", "dsfs"],
-    trivia_questions: [
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 2,
-      },
-      {
-        question: "Questio n 222 teo?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 1,
-      },
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 0,
-      },
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 3,
-      },
-      {
-        question: "How many choices are there?",
-        choices: ["a", "b", "3", "4"],
-        correctAnswer: 2,
-      },
-    ],
-  };
+  const URL = "/api/trivia/";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setStatus("Loading");
+      const res = await fetch(URL + triviaId);
+      const data = await res.json();
+      setTrivia(data);
+      setStatus("resolved");
+    };
+    fetchData();
+  }, [triviaId]);
 
   const showQuestions = () => {
     const questions = [];
-    for (let i = 0; i < trivia.trivia_questions.length; i++) {
+    for (let i = 0; i < trivia?.trivia_questions?.length; i++) {
       questions.push(
         <QuestionBox question={trivia.trivia_questions[i]} number={i + 1} />
       );
