@@ -6,6 +6,7 @@ import SignupPage from "./pages/SignupPage";
 import NewquizPage from "./pages/NewquizPage";
 import ViewTrivia from "./pages/ViewTrivia";
 import PlayTrivia from "./pages/PlayTrivia";
+import { useState } from "react"
 
 //* Import Components
 // import Test from "./components/Test";
@@ -14,9 +15,15 @@ import NewTrivia from "./components/FormTest/NewTrivia";
 // import NewTrivia from "./components/FormTest/NewTrivia"
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({})
+  const getCurrentUser = (user) => {
+    setCurrentUser(user) 
+    console.log("propscurrent user" , user)
+  }
+
   return (
     <div className="App">
-      <Navbar />
+      <Navbar currentUser={currentUser} />
       {/* <Test /> */}
 
       <div className="pt-14">
@@ -25,7 +32,7 @@ function App() {
             <Homepage />
           </Route>
           <Route path="/login">
-            <LoginPage />
+            <LoginPage getCurrentUser={getCurrentUser} />
           </Route>
 
           {/* <Route path="/trivia/newTest">

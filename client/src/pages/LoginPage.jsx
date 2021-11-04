@@ -4,8 +4,10 @@ import * as Separator from "@radix-ui/react-separator";
 import UserDetailsInput from "../components/UserDetailsInput";
 import UserDetailsButton from "../components/UserDetailsButton";
 import RedirectButton from "../components/RedirectButton";
+import { useHistory } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+  const history = useHistory();
   const [status, setStatus] = useState("pending");
 
   const sendData = async (login) => {
@@ -19,6 +21,7 @@ const LoginPage = () => {
         },
       });
       const data = await res.json();
+      props.getCurrentUser(data)
       console.log(data);
       // console.log(sessions)
 
@@ -35,6 +38,7 @@ const LoginPage = () => {
       password: e.target.password.value,
     };
     sendData(login);
+    history.push("/");
   }
 
   return (
