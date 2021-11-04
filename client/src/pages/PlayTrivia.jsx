@@ -1,54 +1,65 @@
-const PlayTrivia = () => {
-  const QuestionNumber = () => {
-    return (
-      <>
-        <h2 className="text-4xl font-semibold text-red-600">Question 1</h2>
-      </>
-    );
-  };
-  const QuestionName = () => {
-    return (
-      <>
-        <h3 className="text-2xl text-red-600 pt-4">
-          What is the largest animal on the planet?
-        </h3>
-      </>
-    );
-  };
-  const ChoicesBox = () => {
-    const Choice = (props) => {
-      return (
-        <>
-          <label htmlFor={props.id} className="">
-            <input type="radio" name="qn1" id={props.id} className="hidden" />
-            <div className="label-checked:bg-red-600 label-checked:text-white border-2 rounded-lg border-red-600 text-center text-red-600 text-2xl py-4 my-2 md:m-2 cursor-pointer">
-              {props.id}
-            </div>
-          </label>
-        </>
-      );
-    };
+import QuestionBox from "../components/QuestionBox";
 
-    return (
-      <>
-        <div className="grid grid-cols-1 md:grid-cols-2 mt-5">
-          <Choice id="1" />
-          <Choice id="2" />
-          <Choice id="3" />
-          <Choice id="4" />
-        </div>
-      </>
-    );
+const PlayTrivia = () => {
+  //* fetch questions
+
+  const trivia = {
+    title: "Marvek ",
+    image:
+      "https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    likes: 5,
+    tags: ["funny", "difficult", "dsfs"],
+    trivia_questions: [
+      {
+        question: "How many choices are there?",
+        choices: ["a", "b", "3", "4"],
+        correctAnswer: 2,
+      },
+      {
+        question: "Questio n 222 teo?",
+        choices: ["a", "b", "3", "4"],
+        correctAnswer: 1,
+      },
+      {
+        question: "How many choices are there?",
+        choices: ["a", "b", "3", "4"],
+        correctAnswer: 0,
+      },
+      {
+        question: "How many choices are there?",
+        choices: ["a", "b", "3", "4"],
+        correctAnswer: 3,
+      },
+      {
+        question: "How many choices are there?",
+        choices: ["a", "b", "3", "4"],
+        correctAnswer: 2,
+      },
+    ],
+  };
+
+  const showQuestions = () => {
+    const questions = [];
+    for (let i = 0; i < trivia.trivia_questions.length; i++) {
+      questions.push(
+        <QuestionBox question={trivia.trivia_questions[i]} number={i + 1} />
+      );
+    }
+    return questions;
   };
 
   return (
     <>
       <div className="max-w-4xl lg:max-w-7xl mx-auto pt-4 px-4 sm:pt-6 lg:px-8">
-        <div className="grid grid-cols-1">
-          <QuestionNumber />
-          <QuestionName />
-        </div>
-        <ChoicesBox />
+        <form action="">
+          <h1 className="text-5xl text-red-600 font-semibold my-2 mb-8">
+            {trivia.title}
+          </h1>
+          {showQuestions()}
+          <button className="w-full text-white text-3xl rounded-lg bg-red-600 py-3 mb-32">
+            Submit answers
+          </button>
+        </form>
       </div>
     </>
   );
