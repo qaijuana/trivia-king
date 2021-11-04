@@ -3,6 +3,13 @@ const Trivia = require("../models/trivia_model");
 const router = express.Router();
 const User = require("../models/users_model");
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next();
+  } else {
+    res.redirect("api/sessions/new");
+  }
+};
 
 router.get("/", async (req, res) => {
   const trivia = await Trivia.find({});
@@ -10,13 +17,13 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/seed", async (req, res) => {
-
   const trivia = await Trivia.create(
     {
       title: "Colors",
       description: "Colors of the world",
       category: "General Knowledge",
-      images: "https://www.readersdigest.ca/wp-content/uploads/2020/03/color-quiz.jpg",
+      images:
+        "https://www.readersdigest.ca/wp-content/uploads/2020/03/color-quiz.jpg",
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
@@ -44,7 +51,8 @@ router.get("/seed", async (req, res) => {
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
-          question: "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
+          question:
+            "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
           choices: ["Bulldog", "Yorkshire Terrier", "Boxer", "Pug"],
           correctAnswer: 0,
         },
@@ -54,18 +62,26 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 1,
         },
         {
-          question: "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
+          question:
+            "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
           choices: ["Standard Chartered", "Bank of China", "HSBC", "OCBC"],
           correctAnswer: 3,
         },
         {
-          question: "If you planted the seeds of Quercus robur, what would grow?",
+          question:
+            "If you planted the seeds of Quercus robur, what would grow?",
           choices: ["Vegetables", "Grains", "Trees", "Flowers"],
           correctAnswer: 2,
         },
         {
-          question: "The word &quot;astasia&quot; means which of the following?",
-          choices: ["A feverish desire to rip one&#039;s clothes off", "The inability to concentrate on anything", "The inability to make decisions", "The inability to stand up"],
+          question:
+            "The word &quot;astasia&quot; means which of the following?",
+          choices: [
+            "A feverish desire to rip one&#039;s clothes off",
+            "The inability to concentrate on anything",
+            "The inability to make decisions",
+            "The inability to stand up",
+          ],
           correctAnswer: 3,
         },
       ],
@@ -78,7 +94,8 @@ router.get("/seed", async (req, res) => {
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
-          question: "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
+          question:
+            "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
           choices: ["Bulldog", "Yorkshire Terrier", "Boxer", "Pug"],
           correctAnswer: 0,
         },
@@ -88,18 +105,26 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 1,
         },
         {
-          question: "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
+          question:
+            "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
           choices: ["Standard Chartered", "Bank of China", "HSBC", "OCBC"],
           correctAnswer: 3,
         },
         {
-          question: "If you planted the seeds of Quercus robur, what would grow?",
+          question:
+            "If you planted the seeds of Quercus robur, what would grow?",
           choices: ["Vegetables", "Grains", "Trees", "Flowers"],
           correctAnswer: 2,
         },
         {
-          question: "The word &quot;astasia&quot; means which of the following?",
-          choices: ["A feverish desire to rip one&#039;s clothes off", "The inability to concentrate on anything", "The inability to make decisions", "The inability to stand up"],
+          question:
+            "The word &quot;astasia&quot; means which of the following?",
+          choices: [
+            "A feverish desire to rip one&#039;s clothes off",
+            "The inability to concentrate on anything",
+            "The inability to make decisions",
+            "The inability to stand up",
+          ],
           correctAnswer: 3,
         },
       ],
@@ -112,7 +137,8 @@ router.get("/seed", async (req, res) => {
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
-          question: "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
+          question:
+            "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
           choices: ["Bulldog", "Yorkshire Terrier", "Boxer", "Pug"],
           correctAnswer: 0,
         },
@@ -122,18 +148,26 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 1,
         },
         {
-          question: "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
+          question:
+            "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
           choices: ["Standard Chartered", "Bank of China", "HSBC", "OCBC"],
           correctAnswer: 3,
         },
         {
-          question: "If you planted the seeds of Quercus robur, what would grow?",
+          question:
+            "If you planted the seeds of Quercus robur, what would grow?",
           choices: ["Vegetables", "Grains", "Trees", "Flowers"],
           correctAnswer: 2,
         },
         {
-          question: "The word &quot;astasia&quot; means which of the following?",
-          choices: ["A feverish desire to rip one&#039;s clothes off", "The inability to concentrate on anything", "The inability to make decisions", "The inability to stand up"],
+          question:
+            "The word &quot;astasia&quot; means which of the following?",
+          choices: [
+            "A feverish desire to rip one&#039;s clothes off",
+            "The inability to concentrate on anything",
+            "The inability to make decisions",
+            "The inability to stand up",
+          ],
           correctAnswer: 3,
         },
       ],
@@ -146,7 +180,8 @@ router.get("/seed", async (req, res) => {
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
-          question: "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
+          question:
+            "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
           choices: ["Bulldog", "Yorkshire Terrier", "Boxer", "Pug"],
           correctAnswer: 0,
         },
@@ -156,18 +191,26 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 1,
         },
         {
-          question: "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
+          question:
+            "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
           choices: ["Standard Chartered", "Bank of China", "HSBC", "OCBC"],
           correctAnswer: 3,
         },
         {
-          question: "If you planted the seeds of Quercus robur, what would grow?",
+          question:
+            "If you planted the seeds of Quercus robur, what would grow?",
           choices: ["Vegetables", "Grains", "Trees", "Flowers"],
           correctAnswer: 2,
         },
         {
-          question: "The word &quot;astasia&quot; means which of the following?",
-          choices: ["A feverish desire to rip one&#039;s clothes off", "The inability to concentrate on anything", "The inability to make decisions", "The inability to stand up"],
+          question:
+            "The word &quot;astasia&quot; means which of the following?",
+          choices: [
+            "A feverish desire to rip one&#039;s clothes off",
+            "The inability to concentrate on anything",
+            "The inability to make decisions",
+            "The inability to stand up",
+          ],
           correctAnswer: 3,
         },
       ],
@@ -180,7 +223,8 @@ router.get("/seed", async (req, res) => {
       tags: ["colors", "general knowledge", "rainbow"],
       trivia_questions: [
         {
-          question: "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
+          question:
+            "What type of dog is &#039;Handsome Dan&#039;, the mascot of Yale University?",
           choices: ["Bulldog", "Yorkshire Terrier", "Boxer", "Pug"],
           correctAnswer: 0,
         },
@@ -190,18 +234,26 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 1,
         },
         {
-          question: "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
+          question:
+            "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
           choices: ["Standard Chartered", "Bank of China", "HSBC", "OCBC"],
           correctAnswer: 3,
         },
         {
-          question: "If you planted the seeds of Quercus robur, what would grow?",
+          question:
+            "If you planted the seeds of Quercus robur, what would grow?",
           choices: ["Vegetables", "Grains", "Trees", "Flowers"],
           correctAnswer: 2,
         },
         {
-          question: "The word &quot;astasia&quot; means which of the following?",
-          choices: ["A feverish desire to rip one&#039;s clothes off", "The inability to concentrate on anything", "The inability to make decisions", "The inability to stand up"],
+          question:
+            "The word &quot;astasia&quot; means which of the following?",
+          choices: [
+            "A feverish desire to rip one&#039;s clothes off",
+            "The inability to concentrate on anything",
+            "The inability to make decisions",
+            "The inability to stand up",
+          ],
           correctAnswer: 3,
         },
       ],
@@ -214,23 +266,37 @@ router.get("/seed", async (req, res) => {
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
-          question: "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
+          question:
+            "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
           choices: ["Prince", "Cameo", "Michael Jackson", "Rick James"],
           correctAnswer: 0,
         },
         {
-          question: "Which member of the Foo Fighters was previously the drummer for Nirvana?",
-          choices: ["Chris Shiflett", "Dave Grohl", "Nate Mendel", "Taylor Hawkins"],
+          question:
+            "Which member of the Foo Fighters was previously the drummer for Nirvana?",
+          choices: [
+            "Chris Shiflett",
+            "Dave Grohl",
+            "Nate Mendel",
+            "Taylor Hawkins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
+          question:
+            "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
           choices: ["25", "21", "19", "12"],
           correctAnswer: 3,
         },
         {
-          question: "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
-          choices: ["Chief Keef", "Wolfgang Amadeus Mozart", "Ludvig Van Beethoven", "Johannes Brahms"],
+          question:
+            "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
+          choices: [
+            "Chief Keef",
+            "Wolfgang Amadeus Mozart",
+            "Ludvig Van Beethoven",
+            "Johannes Brahms",
+          ],
           correctAnswer: 2,
         },
         {
@@ -248,23 +314,37 @@ router.get("/seed", async (req, res) => {
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
-          question: "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
+          question:
+            "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
           choices: ["Prince", "Cameo", "Michael Jackson", "Rick James"],
           correctAnswer: 0,
         },
         {
-          question: "Which member of the Foo Fighters was previously the drummer for Nirvana?",
-          choices: ["Chris Shiflett", "Dave Grohl", "Nate Mendel", "Taylor Hawkins"],
+          question:
+            "Which member of the Foo Fighters was previously the drummer for Nirvana?",
+          choices: [
+            "Chris Shiflett",
+            "Dave Grohl",
+            "Nate Mendel",
+            "Taylor Hawkins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
+          question:
+            "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
           choices: ["25", "21", "19", "12"],
           correctAnswer: 3,
         },
         {
-          question: "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
-          choices: ["Chief Keef", "Wolfgang Amadeus Mozart", "Ludvig Van Beethoven", "Johannes Brahms"],
+          question:
+            "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
+          choices: [
+            "Chief Keef",
+            "Wolfgang Amadeus Mozart",
+            "Ludvig Van Beethoven",
+            "Johannes Brahms",
+          ],
           correctAnswer: 2,
         },
         {
@@ -282,23 +362,37 @@ router.get("/seed", async (req, res) => {
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
-          question: "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
+          question:
+            "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
           choices: ["Prince", "Cameo", "Michael Jackson", "Rick James"],
           correctAnswer: 0,
         },
         {
-          question: "Which member of the Foo Fighters was previously the drummer for Nirvana?",
-          choices: ["Chris Shiflett", "Dave Grohl", "Nate Mendel", "Taylor Hawkins"],
+          question:
+            "Which member of the Foo Fighters was previously the drummer for Nirvana?",
+          choices: [
+            "Chris Shiflett",
+            "Dave Grohl",
+            "Nate Mendel",
+            "Taylor Hawkins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
+          question:
+            "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
           choices: ["25", "21", "19", "12"],
           correctAnswer: 3,
         },
         {
-          question: "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
-          choices: ["Chief Keef", "Wolfgang Amadeus Mozart", "Ludvig Van Beethoven", "Johannes Brahms"],
+          question:
+            "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
+          choices: [
+            "Chief Keef",
+            "Wolfgang Amadeus Mozart",
+            "Ludvig Van Beethoven",
+            "Johannes Brahms",
+          ],
           correctAnswer: 2,
         },
         {
@@ -316,23 +410,37 @@ router.get("/seed", async (req, res) => {
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
-          question: "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
+          question:
+            "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
           choices: ["Prince", "Cameo", "Michael Jackson", "Rick James"],
           correctAnswer: 0,
         },
         {
-          question: "Which member of the Foo Fighters was previously the drummer for Nirvana?",
-          choices: ["Chris Shiflett", "Dave Grohl", "Nate Mendel", "Taylor Hawkins"],
+          question:
+            "Which member of the Foo Fighters was previously the drummer for Nirvana?",
+          choices: [
+            "Chris Shiflett",
+            "Dave Grohl",
+            "Nate Mendel",
+            "Taylor Hawkins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
+          question:
+            "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
           choices: ["25", "21", "19", "12"],
           correctAnswer: 3,
         },
         {
-          question: "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
-          choices: ["Chief Keef", "Wolfgang Amadeus Mozart", "Ludvig Van Beethoven", "Johannes Brahms"],
+          question:
+            "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
+          choices: [
+            "Chief Keef",
+            "Wolfgang Amadeus Mozart",
+            "Ludvig Van Beethoven",
+            "Johannes Brahms",
+          ],
           correctAnswer: 2,
         },
         {
@@ -350,23 +458,37 @@ router.get("/seed", async (req, res) => {
       tags: ["sound", "music", "artist"],
       trivia_questions: [
         {
-          question: "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
+          question:
+            "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
           choices: ["Prince", "Cameo", "Michael Jackson", "Rick James"],
           correctAnswer: 0,
         },
         {
-          question: "Which member of the Foo Fighters was previously the drummer for Nirvana?",
-          choices: ["Chris Shiflett", "Dave Grohl", "Nate Mendel", "Taylor Hawkins"],
+          question:
+            "Which member of the Foo Fighters was previously the drummer for Nirvana?",
+          choices: [
+            "Chris Shiflett",
+            "Dave Grohl",
+            "Nate Mendel",
+            "Taylor Hawkins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
+          question:
+            "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
           choices: ["25", "21", "19", "12"],
           correctAnswer: 3,
         },
         {
-          question: "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
-          choices: ["Chief Keef", "Wolfgang Amadeus Mozart", "Ludvig Van Beethoven", "Johannes Brahms"],
+          question:
+            "Which classical composer wrote the &quot;Moonlight Sonata&quot;?",
+          choices: [
+            "Chief Keef",
+            "Wolfgang Amadeus Mozart",
+            "Ludvig Van Beethoven",
+            "Johannes Brahms",
+          ],
           correctAnswer: 2,
         },
         {
@@ -399,8 +521,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 3,
         },
         {
-          question: "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
-          choices: ["One Billionth", "One Quadrillionth", "One Quintillionth", "One Septillionth"],
+          question:
+            "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
+          choices: [
+            "One Billionth",
+            "One Quadrillionth",
+            "One Quintillionth",
+            "One Septillionth",
+          ],
           correctAnswer: 2,
         },
         {
@@ -433,8 +561,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 3,
         },
         {
-          question: "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
-          choices: ["One Billionth", "One Quadrillionth", "One Quintillionth", "One Septillionth"],
+          question:
+            "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
+          choices: [
+            "One Billionth",
+            "One Quadrillionth",
+            "One Quintillionth",
+            "One Septillionth",
+          ],
           correctAnswer: 2,
         },
         {
@@ -467,8 +601,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 3,
         },
         {
-          question: "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
-          choices: ["One Billionth", "One Quadrillionth", "One Quintillionth", "One Septillionth"],
+          question:
+            "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
+          choices: [
+            "One Billionth",
+            "One Quadrillionth",
+            "One Quintillionth",
+            "One Septillionth",
+          ],
           correctAnswer: 2,
         },
         {
@@ -501,8 +641,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 3,
         },
         {
-          question: "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
-          choices: ["One Billionth", "One Quadrillionth", "One Quintillionth", "One Septillionth"],
+          question:
+            "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
+          choices: [
+            "One Billionth",
+            "One Quadrillionth",
+            "One Quintillionth",
+            "One Septillionth",
+          ],
           correctAnswer: 2,
         },
         {
@@ -535,8 +681,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 3,
         },
         {
-          question: "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
-          choices: ["One Billionth", "One Quadrillionth", "One Quintillionth", "One Septillionth"],
+          question:
+            "The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?",
+          choices: [
+            "One Billionth",
+            "One Quadrillionth",
+            "One Quintillionth",
+            "One Septillionth",
+          ],
           correctAnswer: 2,
         },
         {
@@ -559,12 +711,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 0,
         },
         {
-          question: "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
+          question:
+            "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
           choices: ["Japanese", "Chinese", "Russian", "Indian"],
           correctAnswer: 1,
         },
         {
-          question: "Which of the following language families is the most controversial amongst modern linguists?",
+          question:
+            "Which of the following language families is the most controversial amongst modern linguists?",
           choices: ["Sino-Tibetan", "Dravidian", "Indo-European", "Altaic"],
           correctAnswer: 3,
         },
@@ -593,12 +747,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 0,
         },
         {
-          question: "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
+          question:
+            "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
           choices: ["Japanese", "Chinese", "Russian", "Indian"],
           correctAnswer: 1,
         },
         {
-          question: "Which of the following language families is the most controversial amongst modern linguists?",
+          question:
+            "Which of the following language families is the most controversial amongst modern linguists?",
           choices: ["Sino-Tibetan", "Dravidian", "Indo-European", "Altaic"],
           correctAnswer: 3,
         },
@@ -627,12 +783,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 0,
         },
         {
-          question: "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
+          question:
+            "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
           choices: ["Japanese", "Chinese", "Russian", "Indian"],
           correctAnswer: 1,
         },
         {
-          question: "Which of the following language families is the most controversial amongst modern linguists?",
+          question:
+            "Which of the following language families is the most controversial amongst modern linguists?",
           choices: ["Sino-Tibetan", "Dravidian", "Indo-European", "Altaic"],
           correctAnswer: 3,
         },
@@ -661,12 +819,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 0,
         },
         {
-          question: "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
+          question:
+            "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
           choices: ["Japanese", "Chinese", "Russian", "Indian"],
           correctAnswer: 1,
         },
         {
-          question: "Which of the following language families is the most controversial amongst modern linguists?",
+          question:
+            "Which of the following language families is the most controversial amongst modern linguists?",
           choices: ["Sino-Tibetan", "Dravidian", "Indo-European", "Altaic"],
           correctAnswer: 3,
         },
@@ -695,12 +855,14 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 0,
         },
         {
-          question: "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
+          question:
+            "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
           choices: ["Japanese", "Chinese", "Russian", "Indian"],
           correctAnswer: 1,
         },
         {
-          question: "Which of the following language families is the most controversial amongst modern linguists?",
+          question:
+            "Which of the following language families is the most controversial amongst modern linguists?",
           choices: ["Sino-Tibetan", "Dravidian", "Indo-European", "Altaic"],
           correctAnswer: 3,
         },
@@ -724,17 +886,25 @@ router.get("/seed", async (req, res) => {
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
-          question: "Which of the following sports is not part of the triathlon?",
+          question:
+            "Which of the following sports is not part of the triathlon?",
           choices: ["Horse-Riding", "Swimming", "Cycling", "Running"],
           correctAnswer: 0,
         },
         {
-          question: "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
-          choices: ["Toronto Maple Leafs", "Philadelphia Flyers", "New York Rangers", "Boston Bruins"],
+          question:
+            "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
+          choices: [
+            "Toronto Maple Leafs",
+            "Philadelphia Flyers",
+            "New York Rangers",
+            "Boston Bruins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "How many soccer players should be on the field at the same time?",
+          question:
+            "How many soccer players should be on the field at the same time?",
           choices: ["20", "24", "26", "22"],
           correctAnswer: 3,
         },
@@ -744,7 +914,8 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 2,
         },
         {
-          question: "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
+          question:
+            "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
           choices: ["August 23", "August 19", "August 17", "August 21"],
           correctAnswer: 3,
         },
@@ -758,17 +929,25 @@ router.get("/seed", async (req, res) => {
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
-          question: "Which of the following sports is not part of the triathlon?",
+          question:
+            "Which of the following sports is not part of the triathlon?",
           choices: ["Horse-Riding", "Swimming", "Cycling", "Running"],
           correctAnswer: 0,
         },
         {
-          question: "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
-          choices: ["Toronto Maple Leafs", "Philadelphia Flyers", "New York Rangers", "Boston Bruins"],
+          question:
+            "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
+          choices: [
+            "Toronto Maple Leafs",
+            "Philadelphia Flyers",
+            "New York Rangers",
+            "Boston Bruins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "How many soccer players should be on the field at the same time?",
+          question:
+            "How many soccer players should be on the field at the same time?",
           choices: ["20", "24", "26", "22"],
           correctAnswer: 3,
         },
@@ -778,7 +957,8 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 2,
         },
         {
-          question: "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
+          question:
+            "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
           choices: ["August 23", "August 19", "August 17", "August 21"],
           correctAnswer: 3,
         },
@@ -792,17 +972,25 @@ router.get("/seed", async (req, res) => {
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
-          question: "Which of the following sports is not part of the triathlon?",
+          question:
+            "Which of the following sports is not part of the triathlon?",
           choices: ["Horse-Riding", "Swimming", "Cycling", "Running"],
           correctAnswer: 0,
         },
         {
-          question: "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
-          choices: ["Toronto Maple Leafs", "Philadelphia Flyers", "New York Rangers", "Boston Bruins"],
+          question:
+            "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
+          choices: [
+            "Toronto Maple Leafs",
+            "Philadelphia Flyers",
+            "New York Rangers",
+            "Boston Bruins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "How many soccer players should be on the field at the same time?",
+          question:
+            "How many soccer players should be on the field at the same time?",
           choices: ["20", "24", "26", "22"],
           correctAnswer: 3,
         },
@@ -812,7 +1000,8 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 2,
         },
         {
-          question: "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
+          question:
+            "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
           choices: ["August 23", "August 19", "August 17", "August 21"],
           correctAnswer: 3,
         },
@@ -826,17 +1015,25 @@ router.get("/seed", async (req, res) => {
       tags: ["Football", "Golf", "Sports"],
       trivia_questions: [
         {
-          question: "Which of the following sports is not part of the triathlon?",
+          question:
+            "Which of the following sports is not part of the triathlon?",
           choices: ["Horse-Riding", "Swimming", "Cycling", "Running"],
           correctAnswer: 0,
         },
         {
-          question: "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
-          choices: ["Toronto Maple Leafs", "Philadelphia Flyers", "New York Rangers", "Boston Bruins"],
+          question:
+            "Which of these teams isn&#039;t a member of the NHL&#039;s &quot;Original Six&quot; era?",
+          choices: [
+            "Toronto Maple Leafs",
+            "Philadelphia Flyers",
+            "New York Rangers",
+            "Boston Bruins",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "How many soccer players should be on the field at the same time?",
+          question:
+            "How many soccer players should be on the field at the same time?",
           choices: ["20", "24", "26", "22"],
           correctAnswer: 3,
         },
@@ -846,7 +1043,8 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 2,
         },
         {
-          question: "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
+          question:
+            "The Rio 2016 Summer Olympics held it&#039;s closing ceremony on what date?",
           choices: ["August 23", "August 19", "August 17", "August 21"],
           correctAnswer: 3,
         },
@@ -860,23 +1058,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -894,23 +1111,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -928,23 +1164,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -962,23 +1217,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -996,85 +1270,25 @@ router.get("/seed", async (req, res) => {
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
           choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
           correctAnswer: 0,
         },
         {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
-          choices: ["50", "100", "1000", "500"],
-          correctAnswer: 3,
-        },
-        {
-          question: "In what year did the Wall Street Crash take place?",
-          choices: ["1932", "1930", "1929", "1925"],
-          correctAnswer: 2,
-        },
-        {
-          question: "When did Norway become free from Sweden?",
-          choices: ["1834", "1925", "1814", "1905"],
-          correctAnswer: 3,
-        },
-      ],
-    },
-    {
-      title: "Hers and His Story",
-      description: "Dont you dare snooze this time!!",
-      category: "History",
-      images: "",
-      tags: ["History", "Herstory", "Knowledge"],
-      trivia_questions: [
-        {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
-          choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
-          correctAnswer: 0,
-        },
-        {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
-          correctAnswer: 1,
-        },
-        {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
-          choices: ["50", "100", "1000", "500"],
-          correctAnswer: 3,
-        },
-        {
-          question: "In what year did the Wall Street Crash take place?",
-          choices: ["1932", "1930", "1929", "1925"],
-          correctAnswer: 2,
-        },
-        {
-          question: "When did Norway become free from Sweden?",
-          choices: ["1834", "1925", "1814", "1905"],
-          correctAnswer: 3,
-        },
-      ],
-    },
-    {
-      title: "Hers and His Story",
-      description: "Dont you dare snooze this time!!",
-      category: "History",
-      images: "",
-      tags: ["History", "Herstory", "Knowledge"],
-      trivia_questions: [
-        {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
-          choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
-          correctAnswer: 0,
-        },
-        {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
-          correctAnswer: 1,
-        },
-        {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
           choices: ["50", "100", "1000", "500"],
           correctAnswer: 3,
         },
@@ -1098,17 +1312,109 @@ router.get("/seed", async (req, res) => {
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
           choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
           correctAnswer: 0,
         },
         {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
+          choices: ["50", "100", "1000", "500"],
+          correctAnswer: 3,
+        },
+        {
+          question: "In what year did the Wall Street Crash take place?",
+          choices: ["1932", "1930", "1929", "1925"],
+          correctAnswer: 2,
+        },
+        {
+          question: "When did Norway become free from Sweden?",
+          choices: ["1834", "1925", "1814", "1905"],
+          correctAnswer: 3,
+        },
+      ],
+    },
+    {
+      title: "Hers and His Story",
+      description: "Dont you dare snooze this time!!",
+      category: "History",
+      images: "",
+      tags: ["History", "Herstory", "Knowledge"],
+      trivia_questions: [
+        {
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
+          correctAnswer: 0,
+        },
+        {
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
+          correctAnswer: 1,
+        },
+        {
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
+          choices: ["50", "100", "1000", "500"],
+          correctAnswer: 3,
+        },
+        {
+          question: "In what year did the Wall Street Crash take place?",
+          choices: ["1932", "1930", "1929", "1925"],
+          correctAnswer: 2,
+        },
+        {
+          question: "When did Norway become free from Sweden?",
+          choices: ["1834", "1925", "1814", "1905"],
+          correctAnswer: 3,
+        },
+      ],
+    },
+    {
+      title: "Hers and His Story",
+      description: "Dont you dare snooze this time!!",
+      category: "History",
+      images: "",
+      tags: ["History", "Herstory", "Knowledge"],
+      trivia_questions: [
+        {
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
+          correctAnswer: 0,
+        },
+        {
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
+          correctAnswer: 1,
+        },
+        {
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
           choices: ["50", "100", "1000", "500"],
           correctAnswer: 3,
         },
@@ -1132,17 +1438,25 @@ router.get("/seed", async (req, res) => {
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
           choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
           correctAnswer: 0,
         },
         {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
           choices: ["50", "100", "1000", "500"],
           correctAnswer: 3,
         },
@@ -1166,17 +1480,25 @@ router.get("/seed", async (req, res) => {
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
           choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
           correctAnswer: 0,
         },
         {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
           choices: ["50", "100", "1000", "500"],
           correctAnswer: 3,
         },
@@ -1200,17 +1522,25 @@ router.get("/seed", async (req, res) => {
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
           choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
           correctAnswer: 0,
         },
         {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
           choices: ["50", "100", "1000", "500"],
           correctAnswer: 3,
         },
@@ -1234,17 +1564,25 @@ router.get("/seed", async (req, res) => {
       tags: ["History", "Herstory", "Knowledge"],
       trivia_questions: [
         {
-          question: "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
+          question:
+            "With which Greek philosopher would you associate the phrase, &quot;I know that I know nothing&quot;?",
           choices: ["Socrates", "Plato", "Plato", "Pythagoras"],
           correctAnswer: 0,
         },
         {
-          question: "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
-          choices: ["Joseph and Catherine", "John and Mary", "William and Elizabeth", "George and Anne"],
+          question:
+            "In the year 1900, what were the most popular first names given to boy and girl babies born in the United States?",
+          choices: [
+            "Joseph and Catherine",
+            "John and Mary",
+            "William and Elizabeth",
+            "George and Anne",
+          ],
           correctAnswer: 1,
         },
         {
-          question: "What number does the Roman numeral &quot;D&quot; stand for?",
+          question:
+            "What number does the Roman numeral &quot;D&quot; stand for?",
           choices: ["50", "100", "1000", "500"],
           correctAnswer: 3,
         },
@@ -1268,23 +1606,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1302,23 +1659,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1336,23 +1712,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1370,23 +1765,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1404,23 +1818,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1438,23 +1871,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1472,23 +1924,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1506,23 +1977,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1540,23 +2030,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1574,23 +2083,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1608,23 +2136,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1642,23 +2189,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1676,23 +2242,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1710,23 +2295,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1744,23 +2348,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1778,23 +2401,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1812,23 +2454,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1846,23 +2507,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1880,23 +2560,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1914,23 +2613,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1948,23 +2666,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -1982,23 +2719,42 @@ router.get("/seed", async (req, res) => {
       tags: ["Video Games", "Counter Strike", "E-Sports"],
       trivia_questions: [
         {
-          question: "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
-          choices: ["Halo 3: Recon", "Halo 3: Phantom", "Halo 3: Helljumpers", "Halo 3: Guerilla"],
+          question:
+            "When Halo 3: ODST was unveiled in 2008, it had a different title. What was the game formally called?",
+          choices: [
+            "Halo 3: Recon",
+            "Halo 3: Phantom",
+            "Halo 3: Helljumpers",
+            "Halo 3: Guerilla",
+          ],
           correctAnswer: 0,
         },
         {
-          question: "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
+          question:
+            "The most graphically violent game to precede the creation of the ESRB (Entertainment Software Rating Board) was...",
           choices: ["Duke Nukem", "Mortal Kombat", "Doom", "Resident Evil"],
           correctAnswer: 1,
         },
         {
-          question: "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
-          choices: ["Guerrilla Warfare", "Phoenix Connection", "Elite Crew", "Midwest Militia"],
+          question:
+            "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
+          choices: [
+            "Guerrilla Warfare",
+            "Phoenix Connection",
+            "Elite Crew",
+            "Midwest Militia",
+          ],
           correctAnswer: 3,
         },
         {
-          question: "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
-          choices: ["Ferrari FXX-K", "Lotus E23", "Aston Martin Vulcan", "McLaren P1 GTR"],
+          question:
+            "In Forza Motorsport 6, which of these track-exclusive cars was NOT featured in the game, either originally with the game or added as DLC?",
+          choices: [
+            "Ferrari FXX-K",
+            "Lotus E23",
+            "Aston Martin Vulcan",
+            "McLaren P1 GTR",
+          ],
           correctAnswer: 2,
         },
         {
@@ -2007,44 +2763,38 @@ router.get("/seed", async (req, res) => {
           correctAnswer: 3,
         },
       ],
-    },
-
-
-
-
-
+    }
   );
   res.redirect("/api/trivia");
 });
 
-router.post("/", async (req, res) => {
+router.post("/", isAuthenticated, async (req, res) => {
   console.log("backend reqbody POST:", req.body);
   const trivia = await Trivia.create(req.body);
   res.json(trivia);
 });
 
-router.get("/new", (req, res) => {
-  res.render("trivia/new.ejs");
-});
+// router.get("/new", (req, res) => {
+//   res.render("trivia/new.ejs");
+// });
 
-router.get("/:id/like", async (req, res) => {
+router.get("/:id/like", isAuthenticated, async (req, res) => {
   await User.findByIdAndUpdate("617f8755039827ace01e9b4e", {
     $push: { liked_trivia: req.params },
   });
-  await Trivia.findByIdAndUpdate(req.params.id, { $inc: { likes: 1 } })
+  await Trivia.findByIdAndUpdate(req.params.id, { $inc: { likes: 1 } });
   //   await Trivia.findByIdAndUpdate(req.params.id, {likes: 1})
-  res.send("like")
+  res.send("like");
 });
 
-router.get("/:id/unlike", async (req, res) => {
+router.get("/:id/unlike", isAuthenticated, async (req, res) => {
   await User.findByIdAndUpdate("617f8755039827ace01e9b4e", {
     $pull: { liked_trivia: req.params },
   });
-  await Trivia.findByIdAndUpdate(req.params.id, { $inc: { likes: -1 } })
+  await Trivia.findByIdAndUpdate(req.params.id, { $inc: { likes: -1 } });
   //   await Trivia.findByIdAndUpdate(req.params.id, {likes: 1})
-  res.send("unlike")
+  res.send("unlike");
 });
-
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
@@ -2052,16 +2802,15 @@ router.get("/:id", async (req, res) => {
   res.json(trivia);
 });
 
-router.put("/:id", async (req, res) => {
-
-  console.log("reqbody PUT:", req.body)
+router.put("/:id", isAuthenticated, async (req, res) => {
+  console.log("reqbody PUT:", req.body);
   const { id } = req.params;
   const trivia = await Trivia.findByIdAndUpdate(id, req.body);
-  console.log("back end PUT trivia:", trivia)
+  console.log("back end PUT trivia:", trivia);
   res.json(trivia);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", isAuthenticated, async (req, res) => {
   const { id } = req.params;
   try {
     const result = await Trivia.findByIdAndDelete(id);
