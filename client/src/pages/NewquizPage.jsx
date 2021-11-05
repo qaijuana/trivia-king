@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import TriviaInfoForm from "../components/TriviaInfoForm";
 import QuestionsInputForm from "../components/QuestionsInputForm";
 
 const NewquizPage = () => {
+  const history = useHistory();
   // const [questions, setQuestions] = useState([]);
 
   // const handleQuestions = (event) => {
@@ -48,6 +50,7 @@ const NewquizPage = () => {
         console.log("resJson", resJson);
       })
       .catch((error) => console.error({ Error: error }));
+    history.push("/");
   }
 
   const handleSubmit = (event) => {
